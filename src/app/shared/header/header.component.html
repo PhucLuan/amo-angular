@@ -1,0 +1,18 @@
+<div class="app-header">
+    <div class="app-header__namepage">{{ namepage }}</div>
+    <div class="app-header__gr-btn">
+      <a
+        class="app-header__gr-btn--login"
+        (click)="login()"
+        *ngIf="!isAuthenticated"
+        >Login</a
+      >
+      <!-- <button (click)="callApi()">Call Api</button> -->
+      <div *ngIf="isAuthenticated">
+        <!-- <ngbd-dropdown-basic [item]="currentItem"></ngbd-dropdown-basic> -->
+        ahihi login roi nhe
+        <button (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+  

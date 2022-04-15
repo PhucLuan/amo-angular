@@ -1,0 +1,37 @@
+nav > ul {
+    list-style-type: none;
+  }
+  ul.vertical a {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: rgba(239, 241, 245, 1);
+  }
+  ul.vertical a.active {
+    background-color: rgba(207, 35, 56, 1);
+    color: white;
+  }
+  ul.vertical li {
+    margin-bottom: 2%;
+  }
+  ul.vertical li a {
+    white-space: nowrap;
+    line-height: 24px;
+    text-align: left;
+    font-family: Segoe UI, Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(33, 37, 41, 1);
+  }
+  ul.vertical li a.active {
+    color: rgba(250, 252, 252, 1);
+  }
+  ul.vertical li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+  }
+  
