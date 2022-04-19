@@ -22,6 +22,8 @@ import { ManageuserModule } from './features/manageuser/manageuser.module';
 import { AuthenticationGuard } from './core/authentication/authentication.guard';
 import { AuthInterceptorService } from './core/services/auth-interceptor.service';
 import { WelcomeModule } from './features/welcome/welcome.module';
+import { ModalDetailInfoComponent } from './shared/modal-detail-info/modal-detail-info.component';
+import { MatDialogModule } from '@angular/material/dialog';
 //import { HeaderComponent } from './shared/header/header.component';
 //import { SidebarComponent } from './shared/sidebar/sidebar.component';
 //import { StatePipe } from './core/pipe/state.pipe';
@@ -42,6 +44,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
 @NgModule({
   declarations: [
     AppComponent,
+    ModalDetailInfoComponent,
     //HomeComponent,
     //LayoutComponent,
     //ManageassetComponent,
@@ -56,6 +59,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
+    MatDialogModule,
     //BrowserModule,
     //BrowserAnimationsModule,
     AuthModule.forRoot(),
