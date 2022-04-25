@@ -9,10 +9,11 @@ import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from './home.component';
 import { HometableComponent } from './hometable/hometable.component';
 import { StatePipe } from 'src/app/core/pipe/state.pipe';
+import { CheckbtnComponent } from 'src/app/shared/button/checkbtn/checkbtn.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, HometableComponent, StatePipe],
+  declarations: [HomeComponent, HometableComponent,CheckbtnComponent, StatePipe],
   imports: [
     CommonModule,
     HomeRoutingModule,

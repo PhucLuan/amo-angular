@@ -1,0 +1,32 @@
+.check_gf {
+    overflow: visible;
+    width: 15.102px;
+    height: 15px;
+    transform: matrix(1,0,0,1,0,0);
+  }
+  #check_gf {
+    fill: rgba(227,12,24,1);
+    stroke: rgba(227,12,24,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+    cursor: pointer;
+  }
+  .check {
+    overflow: visible;
+    width: 15.102px;
+    height: 15px;
+    transform: matrix(1,0,0,1,0,0);
+  }
+  #check {
+    opacity: 0.6;
+    fill: rgba(227,12,24,1);
+    stroke: rgba(227,12,24,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+  }

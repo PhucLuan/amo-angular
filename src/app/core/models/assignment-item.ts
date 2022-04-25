@@ -5,6 +5,6 @@ export interface AssignmentItem {
     assignedTo: string;
     assignedBy: string;
     assignedDate: string;
-    state: string;
+    stateName: string;
   }
   

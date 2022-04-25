@@ -1,8 +1,4 @@
-<input
-  type="text"
-  placeholder="Search a text"
-  (input)="term$.next($any($event.target).value)"
-/>
+<input type="text" placeholder="Search a text" (input)="term$.next($any($event.target).value)" />
 Term-
 {{ term$ | async }}
 <mat-card class="example-card">
@@ -10,15 +6,8 @@ Term-
   <mat-card-content>
     <div class="example-container mat-elevation-z8">
       <div class="example-table-container">
-        <table
-          mat-table
-          [dataSource]="data"
-          class="example-table"
-          matSort
-          matSortActive="created"
-          matSortDisableClear
-          matSortDirection="desc"
-        >
+        <table mat-table [dataSource]="data" class="myassignment-table" matSort matSortActive="created"
+          matSortDisableClear matSortDirection="desc">
           <!-- Number Column -->
           <ng-container matColumnDef="assetCode">
             <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
@@ -36,11 +25,11 @@ Term-
           </ng-container>
 
           <!-- Created Column -->
-          <ng-container matColumnDef="state">
+          <ng-container matColumnDef="stateName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
               State
             </th>
-            <td mat-cell *matCellDef="let row">{{ row.state | statePipe }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.stateName }}</td>
           </ng-container>
 
           <!-- State Column -->
@@ -51,19 +40,24 @@ Term-
             <td mat-cell *matCellDef="let row">{{ row.assignedDate }}</td>
           </ng-container>
 
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <app-checkbtn 
+                [isDisable] = "row.stateName !== 'Waiting for Accept'"
+                (click)="row.stateName == 'Waiting for Accept'&&onRowClick(row.id)" 
+                (afterModalClose)="updateIsOpenModalDetail()"
+                (checkbtnClickYes)="onClickYes($event)"></app-checkbtn>
+            </td>
+          </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr
-            mat-row
-            *matRowDef="let row; columns: displayedColumns"
-            (click)="openDialog(row)"
-          ></tr>
+          <tr mat-row (click)="openDialog(row)" *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
       </div>
-      <mat-paginator
-        [length]="resultsLength"
-        [pageSize]="30"
-        aria-label="Select page of GitHub search results"
-      >
+      <mat-paginator [length]="resultsLength" [pageSize]="10" aria-label="Select page of GitHub search results">
       </mat-paginator>
     </div>
   </mat-card-content>

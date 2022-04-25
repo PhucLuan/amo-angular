@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -9,6 +9,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export class ModalDetailInfoComponent implements OnInit {
 
+  @Output() ClickYes = new EventEmitter<boolean>();
+  
   constructor(
     public dialogRef: MatDialogRef<ModalDetailInfoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -16,6 +18,11 @@ export class ModalDetailInfoComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  handleSave(): void {
+    this.ClickYes.emit(true);
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
