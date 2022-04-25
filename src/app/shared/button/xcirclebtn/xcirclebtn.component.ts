@@ -3,17 +3,16 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalbtnComponent } from '../modalbtn/modalbtn.component';
 
 @Component({
-  selector: 'app-cancelbtn',
-  templateUrl: './cancelbtn.component.html',
-  styleUrls: ['./cancelbtn.component.css']
+  selector: 'app-xcirclebtn',
+  templateUrl: './xcirclebtn.component.html',
+  styleUrls: ['./xcirclebtn.component.css']
 })
-export class CancelbtnComponent implements OnInit {
+export class XcirclebtnComponent implements OnInit {
 
   @Input() public isDisable! : boolean;
   @Input() public title! : string;
-  @Input() public message! : string;
 
-  @Output() cancelbtnClickYes = new EventEmitter<string>();
+  @Output() xcirclebtnClickYes = new EventEmitter<string>();
   @Output() afterModalClose = new EventEmitter();
 
   constructor(public dialog: MatDialog) { }
@@ -27,22 +26,17 @@ export class CancelbtnComponent implements OnInit {
     }
     const dialogRef = this.dialog.open(ModalbtnComponent, {
       data: {
-        title: this.title,
-        message: this.message
+        title: this.title
       },
     })
 
     //Emit event when User click "yes" option on dialog to where use this button
     dialogRef.componentInstance.ClickYes$.subscribe((res) => {
-      this.cancelbtnClickYes.emit("CancelBtnIsClicked");
+      this.xcirclebtnClickYes.emit("XcircleBtnIsClicked");
     });
 
     dialogRef.componentInstance.dialogRef.afterClosed().subscribe(() => {
       this.afterModalClose.emit();
     })
-  };
-    
-  closeDialog(): void {
-    this.dialog.closeAll();
   }
 }

@@ -12,7 +12,6 @@ const routes: Routes = [
     },
     {
       path: '',
-      //component: LayoutComponent,
       redirectTo: 'home',
       pathMatch: 'full',
     },

@@ -1,0 +1,82 @@
+/*-------------------Circle arrow button--------------------*/
+.arrowbtn {
+  position: relative;
+}
+
+.Path_19_mh {
+  overflow: visible;
+  position: absolute;
+  width: 19.227px;
+  height: 24.17px;
+  top: -8.284px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+#Path_19_mh {
+  fill: rgba(87, 107, 227, 1);
+  stroke: rgba(87, 107, 227, 1);
+  stroke-width: 2px;
+  stroke-linejoin: miter;
+  stroke-linecap: butt;
+  stroke-miterlimit: 4;
+  shape-rendering: auto;
+}
+
+.Path_19_mib {
+  overflow: visible;
+  position: absolute;
+  width: 19.227px;
+  height: 24.17px;
+  top: -8.284px;
+  transform: matrix(1,0,0,1,0,0);
+}
+
+#Path_19_mib {
+  fill: rgba(126, 126, 126, 1);
+  stroke: rgba(124, 124, 124, 1);
+  stroke-width: 2px;
+  stroke-linejoin: miter;
+  stroke-linecap: butt;
+  stroke-miterlimit: 4;
+  shape-rendering: auto;
+}
+
+.Path_20_mia {
+  overflow: visible;
+  position: absolute;
+  width: 6.86px;
+  height: 7.464px;
+  left: 1.241px;
+  top: -12px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+#Path_20_mia {
+  fill: rgba(87, 107, 227, 1);
+  stroke: rgba(87, 107, 227, 1);
+  stroke-width: 2px;
+  stroke-linejoin: miter;
+  stroke-linecap: butt;
+  stroke-miterlimit: 4;
+  shape-rendering: auto;
+}
+
+.Path_20_mic {
+  overflow: visible;
+  position: absolute;
+  width: 6.86px;
+  height: 7.464px;
+  left: 1.241px;
+  top: -12px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+#Path_20_mic {
+  fill: rgba(126, 126, 126, 1);
+  stroke: rgba(124, 124, 124, 1);
+  stroke-width: 2px;
+  stroke-linejoin: miter;
+  stroke-linecap: butt;
+  stroke-miterlimit: 4;
+  shape-rendering: auto;
+}

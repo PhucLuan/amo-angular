@@ -1,0 +1,38 @@
+/*-------------------x-square button--------------------*/
+.x-square-fill_mhr {
+  overflow: visible;
+  width: 14.628px;
+  height: 14.628px;
+  transform: matrix(1,0,0,1,0,0);
+}
+#x-square-fill_mhr {
+  fill: transparent;
+  stroke: rgba(0,0,0,1);
+  stroke-width: 2.5px;
+  stroke-linejoin: miter;
+  stroke-linecap: butt;
+  stroke-miterlimit: 4;
+  shape-rendering: auto;
+}
+
+.x-square-fill_mhv {
+  overflow: visible;
+  width: 14.628px;
+  height: 14.628px;
+  transform: matrix(1,0,0,1,0,0);
+  --web-animation: fadein 0.3s ease-out;
+  --web-action-type: page;
+  --web-action-target: Home___decline.html;
+  cursor: pointer;
+}
+#x-square-fill_mhv {
+  opacity: 0.6;
+  fill: transparent;
+  stroke: rgba(0,0,0,1);
+  stroke-width: 2.5px;
+  stroke-linejoin: miter;
+  stroke-linecap: butt;
+  stroke-miterlimit: 4;
+  shape-rendering: auto;
+}
+

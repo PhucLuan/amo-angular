@@ -10,6 +10,8 @@ import { ModalbtnComponent } from '../modalbtn/modalbtn.component';
 export class CheckbtnComponent implements OnInit {
 
   @Input() public isDisable! : boolean;
+  @Input() public title! : string;
+  @Input() public message! : string;
 
   @Output() checkbtnClickYes = new EventEmitter<string>();
   @Output() afterModalClose = new EventEmitter();
@@ -25,13 +27,14 @@ export class CheckbtnComponent implements OnInit {
     }
     const dialogRef = this.dialog.open(ModalbtnComponent, {
       data: {
-        title: "Are you sure?"
+        title: this.title,
+        message: this.message
       },
     })
 
+    //Emit event when User click "yes" option on dialog to where use this button
     dialogRef.componentInstance.ClickYes$.subscribe((res) => {
-      //console.log(res+" : from modal");
-      this.checkbtnClickYes.emit("test");
+      this.checkbtnClickYes.emit("CheckBtnIsClicked");
     });
 
     dialogRef.componentInstance.dialogRef.afterClosed().subscribe(() => {
@@ -40,7 +43,6 @@ export class CheckbtnComponent implements OnInit {
   };
     
   closeDialog(): void {
-    //console.log("ahihihihihih");
     this.dialog.closeAll();
   }
 }

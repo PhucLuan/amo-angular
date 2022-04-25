@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { BehaviorSubject, catchError, debounceTime, distinctUntilChanged, merge, of, startWith, switchMap } from 'rxjs';
 import { AssignmentItem } from 'src/app/core/models/assignment-item';
 import { HomeService } from 'src/app/core/services/homeservice/home.service';
+import { ArrowcirclebtnComponent } from 'src/app/shared/button/arrowcirclebtn/arrowcirclebtn.component';
+import { CancelbtnComponent } from 'src/app/shared/button/cancelbtn/cancelbtn.component';
 import { CheckbtnComponent } from 'src/app/shared/button/checkbtn/checkbtn.component';
 import { ModalDetailInfoComponent } from 'src/app/shared/modal-detail-info/modal-detail-info.component';
 
@@ -45,9 +47,9 @@ export class HometableComponent implements AfterViewInit {
   resultsLength = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   //Binding button
-  @ViewChild(CheckbtnComponent)
-
-  private mychild!: CheckbtnComponent;
+  @ViewChild(CheckbtnComponent) private checkcomponent!: CheckbtnComponent;
+  @ViewChild(CancelbtnComponent) private canclecomponent!: CancelbtnComponent;
+  @ViewChild(ArrowcirclebtnComponent) private arrowcirclecomponent!: ArrowcirclebtnComponent;
   private currentId: string = '';
 
   constructor(
@@ -91,11 +93,7 @@ export class HometableComponent implements AfterViewInit {
       .subscribe((data: any) => (this.data = data));
   }
 
-  // openSelected(datasource : any) {
-  //   console.log(datasource);
-  // }
-
-  openDialog(datasource: DisplayItem): void {
+  openDialogViewDetailInfo(datasource: DisplayItem): void {
     if (this.isOpenModalDetail) {
       let keyDisplayItem = ["Asset Code", "Asset Name", "Specification", "Assigned to", "Assigned by", "Assigned Date", "State", "Note"];
 
@@ -122,29 +120,32 @@ export class HometableComponent implements AfterViewInit {
   }
 
   onClickYes(res: string) {
-    console.log(res + "From Home cpn with id = " + this.currentId);
-    this.myCallbackFunction();
-    //this.checkButton.closeDialog();
-  }
-  myCallbackFunction = (): void => {
-    //callback code here
-    this.mychild.closeDialog();
+    //do something before close dialog
+    if (res === "CheckBtnIsClicked") {
+      this.checkcomponent.closeDialog();
+    }
+    if (res === "CancelBtnIsClicked") {
+      this.canclecomponent.closeDialog();
+    }
+    if (res === "ArrowcircleBtnIsClicked") {
+      this.arrowcirclecomponent.closeDialog();
+    }
+    console.log("Emit event click yes "+ res + " "+this.currentId)
   }
 
-  onRowClick(assignmentId: string) {
+  onBtnInRowClicked(assignmentId: string) {
+    //Prevent popup detail info before turn on popup of button
+    this.isOpenModalDetail = false;
+    //Update id object
     this.updateAssignmentId(assignmentId)
   }
 
-  updateAssignmentId(assignmentId: string) {
-    console.log("click btn")
-    //this.dialog.closeAll();
-    this.isOpenModalDetail = false;
+  updateAssignmentId(assignmentId: string) { 
     this.currentId = assignmentId;
-    console.log("Id neee : " + this.currentId);
   }
+
   updateIsOpenModalDetail() {
     this.isOpenModalDetail = true;
-    console.log("afterclose modal")
   }
 }
 

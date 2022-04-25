@@ -10,10 +10,12 @@ import { HomeComponent } from './home.component';
 import { HometableComponent } from './hometable/hometable.component';
 import { StatePipe } from 'src/app/core/pipe/state.pipe';
 import { CheckbtnComponent } from 'src/app/shared/button/checkbtn/checkbtn.component';
+import { CancelbtnComponent } from 'src/app/shared/button/cancelbtn/cancelbtn.component';
+import { ArrowcirclebtnComponent } from 'src/app/shared/button/arrowcirclebtn/arrowcirclebtn.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, HometableComponent,CheckbtnComponent, StatePipe],
+  declarations: [HomeComponent, HometableComponent,CheckbtnComponent,CancelbtnComponent, ArrowcirclebtnComponent, StatePipe],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -22,7 +24,6 @@ import { CheckbtnComponent } from 'src/app/shared/button/checkbtn/checkbtn.compo
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
-    //HomeRoutingModule,
   ]
 })
 export class HomeModule { }

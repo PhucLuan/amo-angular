@@ -26,8 +26,10 @@ import { WelcomeModule } from './features/welcome/welcome.module';
 import { ModalDetailInfoComponent } from './shared/modal-detail-info/modal-detail-info.component';
 import { MatDialogModule } from '@angular/material/dialog';
 //import { CheckbtnComponent } from './shared/button/checkbtn/checkbtn.component';
-import { CancelbtnComponent } from './shared/button/cancelbtn/cancelbtn.component';
+//import { CancelbtnComponent } from './shared/button/cancelbtn/cancelbtn.component';
 import { ModalbtnComponent } from './shared/button/modalbtn/modalbtn.component';
+//import { XcirclebtnComponent } from './shared/button/xcirclebtn/xcirclebtn.component';
+//import { ArrowcirclebtnComponent } from './shared/button/arrowcirclebtn/arrowcirclebtn.component';
 //import { HeaderComponent } from './shared/header/header.component';
 //import { SidebarComponent } from './shared/sidebar/sidebar.component';
 //import { StatePipe } from './core/pipe/state.pipe';
@@ -49,8 +51,10 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
   declarations: [
     AppComponent,
     ModalDetailInfoComponent,
-    CancelbtnComponent,
+    //CancelbtnComponent,
     ModalbtnComponent,
+    //XcirclebtnComponent,
+    //ArrowcirclebtnComponent,
     //HomeComponent,
     //LayoutComponent,
     //ManageassetComponent,
@@ -67,8 +71,6 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     MatCardModule,
     MatDialogModule,
     MatIconModule,
-    //BrowserModule,
-    //BrowserAnimationsModule,
     AuthModule.forRoot(),
     HttpClientModule,
     //NgbModule,
@@ -97,7 +99,6 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     },
     AuthenticationGuard,
   ],
-  //exports:[MatIconModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

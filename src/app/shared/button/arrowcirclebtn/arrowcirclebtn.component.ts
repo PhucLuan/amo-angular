@@ -3,17 +3,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalbtnComponent } from '../modalbtn/modalbtn.component';
 
 @Component({
-  selector: 'app-cancelbtn',
-  templateUrl: './cancelbtn.component.html',
-  styleUrls: ['./cancelbtn.component.css']
+  selector: 'app-arrowcirclebtn',
+  templateUrl: './arrowcirclebtn.component.html',
+  styleUrls: ['./arrowcirclebtn.component.css']
 })
-export class CancelbtnComponent implements OnInit {
+export class ArrowcirclebtnComponent implements OnInit {
 
   @Input() public isDisable! : boolean;
   @Input() public title! : string;
   @Input() public message! : string;
-
-  @Output() cancelbtnClickYes = new EventEmitter<string>();
+  
+  @Output() arrowcirclebtnClickYes = new EventEmitter<string>();
   @Output() afterModalClose = new EventEmitter();
 
   constructor(public dialog: MatDialog) { }
@@ -34,15 +34,15 @@ export class CancelbtnComponent implements OnInit {
 
     //Emit event when User click "yes" option on dialog to where use this button
     dialogRef.componentInstance.ClickYes$.subscribe((res) => {
-      this.cancelbtnClickYes.emit("CancelBtnIsClicked");
+      this.arrowcirclebtnClickYes.emit("ArrowcircleBtnIsClicked");
     });
 
     dialogRef.componentInstance.dialogRef.afterClosed().subscribe(() => {
       this.afterModalClose.emit();
     })
   };
-    
+
   closeDialog(): void {
     this.dialog.closeAll();
-  }
+  };
 }
