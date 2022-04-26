@@ -17,18 +17,20 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     //this.currentItem = 'Ahihi';
     if (localStorage.getItem('user') === null) {
+
       this.oidcSecurityService
         .checkAuth()
         .subscribe((auth) => (this.isAuthenticated = auth));
+
       this.oidcSecurityService.userData$.subscribe((data) => {
+        console.log(data)
         if (data !== null) {
           this.username = data.name;
-          console.log('fetch user');
           localStorage.setItem('user', data.name);
+          localStorage.setItem('userId', data.sub);
         }
       });
     } else {
-      console.log(localStorage.getItem('user') + 'ahihi');
       this.currentItem = localStorage.getItem('user')??"";
       this.username = localStorage.getItem('user')??"";
       this.isAuthenticated = localStorage.getItem('user') !== null;
@@ -41,6 +43,8 @@ export class HeaderComponent implements OnInit {
     this.oidcSecurityService.authorize();
   }
   logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('userId');
     this.oidcSecurityService.logoff();
   }
 }

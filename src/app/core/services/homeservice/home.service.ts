@@ -21,9 +21,27 @@ export class HomeService {
   //     }`
   //   );
   // }
-  getData(userid: string): Observable<AssignmentItem[]> {
+  GetDataByUserId(userid: string): Observable<AssignmentItem[]> {
     return this.httpClient.get<AssignmentItem[]>(
       `https://localhost:5011/api/Assignment/user/${userid}`
+    );
+  }
+
+  AcceptAssignment(assignmentId : string): Observable<any> {
+    return this.httpClient.put<any>(
+      `https://localhost:5011/api/Assignment/accept/${assignmentId}`,""
+    );
+  }
+
+  DeclineAssignment(assignmentId : string): Observable<any> {
+    return this.httpClient.delete<any>(
+      `https://localhost:5011/api/Assignment/${assignmentId}`
+    );
+  }
+
+  RequestReturningAssignment(assignment : any): Observable<any> {
+    return this.httpClient.post<any>(
+      `https://localhost:5011/api/Request/`,assignment
     );
   }
 }

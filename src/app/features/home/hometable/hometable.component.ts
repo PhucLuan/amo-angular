@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { BehaviorSubject, catchError, debounceTime, distinctUntilChanged, merge, of, startWith, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY } from 'rxjs';
 import { AssignmentItem } from 'src/app/core/models/assignment-item';
 import { HomeService } from 'src/app/core/services/homeservice/home.service';
 import { ArrowcirclebtnComponent } from 'src/app/shared/button/arrowcirclebtn/arrowcirclebtn.component';
@@ -53,44 +54,12 @@ export class HometableComponent implements AfterViewInit {
   private currentId: string = '';
 
   constructor(
-    private appService: HomeService,
+    private homeService: HomeService,
     public dialog: MatDialog
   ) { }
 
   ngAfterViewInit() {
-    // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-
-    merge(
-      this.sort.sortChange,
-      this.term$.pipe(debounceTime(1000), distinctUntilChanged()),
-      this.paginator.page
-    )
-      .pipe(
-        startWith({}),
-        switchMap((searchTerm) => {
-          // console.log(this.sort.active);
-          // console.log(this.sort.direction);
-          // console.log(this.paginator.pageIndex);
-          return (
-            this.appService!.getData('d45119c7-6e65-47db-b947-bc0280e88394')
-              // searchTerm && typeof searchTerm == 'string'
-              //   ? searchTerm.toString()
-              //   : 'repo:angular/components'
-              //()
-              .pipe(catchError(() => of(null)))
-          );
-        })
-        // map((data) => {
-        //   if (data === null) {
-        //     return [];
-        //   }
-
-        //   this.resultsLength = data.totalPages;
-        //   return data.items;
-        // })
-      )
-      .subscribe((data: any) => (this.data = data));
+    this.LoadData();
   }
 
   openDialogViewDetailInfo(datasource: DisplayItem): void {
@@ -122,29 +91,85 @@ export class HometableComponent implements AfterViewInit {
   onClickYes(res: string) {
     //do something before close dialog
     if (res === "CheckBtnIsClicked") {
+      this.AcceptAssignment(this.currentId);
       this.checkcomponent.closeDialog();
     }
     if (res === "CancelBtnIsClicked") {
+      this.DeclineAssignment(this.currentId);
       this.canclecomponent.closeDialog();
     }
     if (res === "ArrowcircleBtnIsClicked") {
+      this.RequestForReturning({ Id: this.currentId, UserId: localStorage.getItem('userId') ?? '' });
       this.arrowcirclecomponent.closeDialog();
     }
-    console.log("Emit event click yes "+ res + " "+this.currentId)
+    this.LoadData();
+    console.log("Emit event click yes " + res + " " + this.currentId)
   }
 
   onBtnInRowClicked(assignmentId: string) {
     //Prevent popup detail info before turn on popup of button
     this.isOpenModalDetail = false;
     //Update id object
-    this.updateAssignmentId(assignmentId)
+    this.UpdateAssignmentId(assignmentId)
   }
 
-  updateAssignmentId(assignmentId: string) { 
+  LoadData(): void {
+    this.homeService!.GetDataByUserId(localStorage.getItem('userId') ?? "")
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.error instanceof Error) {
+            console.error('An error occurred:', error.error.message);
+          } else {
+            console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
+          }
+          return EMPTY;
+        }))
+      .subscribe((data: any) => (this.data = data));
+  }
+
+  AcceptAssignment(assignmentId: string): void {
+    this.homeService.AcceptAssignment(assignmentId)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.error instanceof Error) {
+            console.error('An error occurred:', error.error.message);
+          } else {
+            console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
+          }
+          return EMPTY;
+        })).subscribe(data => console.log(data));
+  }
+
+  DeclineAssignment(assignmentId: string): void {
+    this.homeService.DeclineAssignment(assignmentId)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.error instanceof Error) {
+            console.error('An error occurred:', error.error.message);
+          } else {
+            console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
+          }
+          return EMPTY;
+        })).subscribe(data => console.log(data));
+  }
+
+  RequestForReturning(assignment: any): void {
+    this.homeService.RequestReturningAssignment(assignment)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.error instanceof Error) {
+            console.error('An error occurred:', error.error.message);
+          } else {
+            console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
+          }
+          return EMPTY;
+        })).subscribe(data => console.log(data));
+  }
+  UpdateAssignmentId(assignmentId: string) {
     this.currentId = assignmentId;
   }
 
-  updateIsOpenModalDetail() {
+  UpdateIsOpenModalDetail() {
     this.isOpenModalDetail = true;
   }
 }

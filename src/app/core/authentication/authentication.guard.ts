@@ -29,14 +29,6 @@ export class AuthenticationGuard implements CanActivate {
           return this.router.parseUrl('/welcome');
         })
       );
-
-    //   this.oidcSecurityService
-    //   .checkAuth()
-    //   .subscribe((auth) => (this.isAuthenticated = auth));
-
-    // if (this.isAuthenticated) return true;
-    // this.router.navigate(['/']);
-    // return false;
   }
   
 }

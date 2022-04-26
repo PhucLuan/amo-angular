@@ -28,6 +28,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 //import { CheckbtnComponent } from './shared/button/checkbtn/checkbtn.component';
 //import { CancelbtnComponent } from './shared/button/cancelbtn/cancelbtn.component';
 import { ModalbtnComponent } from './shared/button/modalbtn/modalbtn.component';
+//import { ReactiveFormsModule } from '@angular/forms';
+//import { MatSelectModule } from '@angular/material/select';
 //import { XcirclebtnComponent } from './shared/button/xcirclebtn/xcirclebtn.component';
 //import { ArrowcirclebtnComponent } from './shared/button/arrowcirclebtn/arrowcirclebtn.component';
 //import { HeaderComponent } from './shared/header/header.component';
@@ -65,12 +67,14 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     //StatePipe
   ],
   imports: [
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatCardModule,
+    // MatTableModule,
+    // MatPaginatorModule,
+    // MatSortModule,
+    // MatCardModule,
     MatDialogModule,
     MatIconModule,
+    //ReactiveFormsModule,
+    //MatSelectModule,
     AuthModule.forRoot(),
     HttpClientModule,
     //NgbModule,

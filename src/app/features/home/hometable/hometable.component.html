@@ -1,8 +1,8 @@
-<input type="text" placeholder="Search a text" (input)="term$.next($any($event.target).value)" />
+<!-- <input type="text" placeholder="Search a text" (input)="term$.next($any($event.target).value)" />
 Term-
-{{ term$ | async }}
+{{ term$ | async }} -->
 <mat-card class="example-card">
-  <mat-card-title>Mat DataTable</mat-card-title>
+  <mat-card-title>My Assignment</mat-card-title>
   <mat-card-content>
     <div class="example-container mat-elevation-z8">
       <div class="example-table-container">
@@ -50,19 +50,19 @@ Term-
                   [isDisable]="row.stateName !== 'Waiting for Accept'" [title]="'Are you sure?'"
                   [message]="'Do you want to accept this assignment?'"
                   (click)="row.stateName == 'Waiting for Accept'&&onBtnInRowClicked(row.id)"
-                  (checkbtnClickYes)="onClickYes($event)" (afterModalClose)="updateIsOpenModalDetail()"></app-checkbtn>
+                  (checkbtnClickYes)="onClickYes($event)" (afterModalClose)="UpdateIsOpenModalDetail()"></app-checkbtn>
 
                 <app-cancelbtn 
                 [isDisable]="row.stateName !== 'Waiting for Accept'" [title]="'Are you sure?'"
                 [message]="'Do you want to decline this assignment?'"  
                 (click)="row.stateName == 'Waiting for Accept'&&onBtnInRowClicked(row.id)"
-                  (cancelbtnClickYes)="onClickYes($event)" (afterModalClose)="updateIsOpenModalDetail()">
+                  (cancelbtnClickYes)="onClickYes($event)" (afterModalClose)="UpdateIsOpenModalDetail()">
                 </app-cancelbtn>
 
-                <app-arrowcirclebtn [isDisable]="row.stateName !== 'Accepted'" [title]="'Are you sure?'"
+                <app-arrowcirclebtn [isDisable]="row.stateName !== 'Accepted'||row.requestAssignmentId !== null" [title]="'Are you sure?'"
                 [message]="'Do you want to create a returning request for this asset?'"   
-                (click)="row.stateName == 'Accepted'&&onBtnInRowClicked(row.id)"
-                  (arrowcirclebtnClickYes)="onClickYes($event)" (afterModalClose)="updateIsOpenModalDetail()">
+                (click)="!(row.stateName !== 'Accepted'||row.requestAssignmentId !== null)&&onBtnInRowClicked(row.id)"
+                  (arrowcirclebtnClickYes)="onClickYes($event)" (afterModalClose)="UpdateIsOpenModalDetail()">
                 </app-arrowcirclebtn>
               </div>
             </td>
@@ -72,8 +72,8 @@ Term-
           <tr mat-row (click)="openDialogViewDetailInfo(row)" *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
       </div>
-      <mat-paginator [length]="resultsLength" [pageSize]="2" aria-label="Select page of GitHub search results">
-      </mat-paginator>
+      <!-- <mat-paginator [length]="resultsLength" [pageSize]="2" aria-label="Select page of GitHub search results">
+      </mat-paginator> -->
     </div>
   </mat-card-content>
 </mat-card>
