@@ -11,13 +11,15 @@ import { MatCardModule } from '@angular/material/card';
 import { AssetFilterComponent } from './asset-filter/asset-filter.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AssetModalComponent } from './asset-modal/asset-modal.component';
 
 
 @NgModule({
   declarations: [
     ManageassetComponent,
     AssetTableComponent,
-    AssetFilterComponent
+    AssetFilterComponent,
+    AssetModalComponent
   ],
   imports: [
     CommonModule,
