@@ -11,6 +11,9 @@ export class XcirclebtnComponent implements OnInit {
 
   @Input() public isDisable! : boolean;
   @Input() public title! : string;
+  @Input() public message! : string;
+  @Input() public confirmBtn! : string;
+  @Input() public cancelBtn! : string;
 
   @Output() xcirclebtnClickYes = new EventEmitter<string>();
   @Output() afterModalClose = new EventEmitter();
@@ -26,7 +29,10 @@ export class XcirclebtnComponent implements OnInit {
     }
     const dialogRef = this.dialog.open(ModalbtnComponent, {
       data: {
-        title: this.title
+        title: this.title,
+        message: this.message,
+        confirmBtn: this.confirmBtn,
+        cancelBtn: this.cancelBtn
       },
     })
 

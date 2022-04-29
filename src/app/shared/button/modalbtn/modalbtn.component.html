@@ -5,7 +5,7 @@
         {{ data.message }}
     </div>
     <div mat-dialog-actions>
-        <button mat-button (click)="onClickYes()">Yes</button>
-        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button color="warn" (click)="onClickYes()">{{data.confirmBtn}}</button>
+        <button mat-raised-button (click)="onNoClick()">{{data.cancelBtn}}</button>
     </div>
 </section>

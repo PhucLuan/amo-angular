@@ -49,18 +49,24 @@ Term-
                 <app-checkbtn 
                   [isDisable]="row.stateName !== 'Waiting for Accept'" [title]="'Are you sure?'"
                   [message]="'Do you want to accept this assignment?'"
+                  [confirmBtn] = "'Accept'"
+                  [cancelBtn] = "'Cancel'"
                   (click)="row.stateName == 'Waiting for Accept'&&onBtnInRowClicked(row.id)"
                   (checkbtnClickYes)="onClickYes($event)" (afterModalClose)="UpdateIsOpenModalDetail()"></app-checkbtn>
 
                 <app-cancelbtn 
                 [isDisable]="row.stateName !== 'Waiting for Accept'" [title]="'Are you sure?'"
                 [message]="'Do you want to decline this assignment?'"  
+                [confirmBtn] = "'Decline'"
+                [cancelBtn] = "'Cancel'"
                 (click)="row.stateName == 'Waiting for Accept'&&onBtnInRowClicked(row.id)"
                   (cancelbtnClickYes)="onClickYes($event)" (afterModalClose)="UpdateIsOpenModalDetail()">
                 </app-cancelbtn>
 
                 <app-arrowcirclebtn [isDisable]="row.stateName !== 'Accepted'||row.requestAssignmentId !== null" [title]="'Are you sure?'"
-                [message]="'Do you want to create a returning request for this asset?'"   
+                [message]="'Do you want to create a returning request for this asset?'"
+                [confirmBtn] = "'Yes'"
+                [cancelBtn] = "'No'"   
                 (click)="!(row.stateName !== 'Accepted'||row.requestAssignmentId !== null)&&onBtnInRowClicked(row.id)"
                   (arrowcirclebtnClickYes)="onClickYes($event)" (afterModalClose)="UpdateIsOpenModalDetail()">
                 </app-arrowcirclebtn>

@@ -11,3 +11,6 @@
     <mat-option *ngFor="let category of categoryList" [value]="category.name">{{category.name}}</mat-option>
   </mat-select>
 </mat-form-field>
+<input type="text" placeholder="Search a text" (input)="searchKey$.next($any($event.target).value)" />
+<!-- Term-
+{{ term$ | async }} -->

@@ -1,8 +1,9 @@
+import { HistoryAssignment } from './../../../core/models/historyassignment';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { BehaviorSubject, catchError, debounceTime, distinctUntilChanged, map, merge, of, startWith, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, debounceTime, distinctUntilChanged, map, merge, Observable, of, startWith, switchMap } from 'rxjs';
 import { AssetItem } from 'src/app/core/models/asset-item';
 import { AssetService } from 'src/app/core/services/assetservice/asset.service';
 import { AssetModalComponent } from '../asset-modal/asset-modal.component';
@@ -18,35 +19,37 @@ export class AssetTableComponent implements AfterViewInit {
     'code',
     'name',
     'categoryName',
-    'state'
+    'state',
+    'action'
   ];
   data: AssetItem[] = [];
-
+  historyAssignment: HistoryAssignment[] = [];
   isOpenModalDetail: boolean = true;
 
+  private currentId: string = '';
+
   @ViewChild(MatSort) sort!: MatSort;
-  term$ = new BehaviorSubject<string>('');
   resultsLength = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   stateFilter = "";
   categoryFilter = "";
   searchFilter = "";
-  constructor(private assetService: AssetService,public dialog: MatDialog) { }
+  constructor(private assetService: AssetService, public dialog: MatDialog) { }
 
   ngAfterViewInit(): void {
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-    this.term$.subscribe(() => this.paginator.pageIndex = 0);
+    this.assetService.searchKey$.subscribe(() => this.paginator.pageIndex = 0);
     this.assetService.stateSelected$.subscribe(() => this.paginator.pageIndex = 0);
     this.assetService.categorySelected$.subscribe(() => this.paginator.pageIndex = 0);
     this.LoadData();
   }
 
-  LoadData(): void{
+  LoadData(): void {
     merge(
-      this.sort.sortChange, 
-      this.term$.pipe(debounceTime(1000), distinctUntilChanged()), 
-      this.paginator.page, 
+      this.sort.sortChange,
+      this.assetService.searchKey$.pipe(debounceTime(1000), distinctUntilChanged()),
+      this.paginator.page,
       this.assetService.stateSelected$,
       this.assetService.categorySelected$)
       .pipe(
@@ -62,15 +65,15 @@ export class AssetTableComponent implements AfterViewInit {
           }
 
           if (searchTerm && typeof searchTerm == 'string') {
-            this.searchFilter =  searchTerm.toString();
-            
+            this.searchFilter = searchTerm.toString();
+
           }
-          else 
+          else
             //keep value of search string when change filter
             if (!(searchTerm.type == 'state' || searchTerm.type == 'category' || typeof searchTerm == 'object')) {
               this.searchFilter = ""
             }
-            
+
           return this.assetService!.GetAsset({
             category: this.categoryFilter,
             state: this.stateFilter,
@@ -94,7 +97,7 @@ export class AssetTableComponent implements AfterViewInit {
   }
 
   openDialogViewDetailInfo(datasource: any): void {
-    
+
     if (this.isOpenModalDetail) {
       let keyDisplayItem = ["Asset Code", "Asset Name", "Category", "Installed Date", "State", "Location", "Specification"];
 
@@ -107,15 +110,55 @@ export class AssetTableComponent implements AfterViewInit {
         location: datasource.location,
         specification: datasource.specification,
       }
-      console.log(datasource)
-      const dialogRef = this.dialog.open(AssetModalComponent, {
 
-        data: {
-          title: "Detailed Assignment Information",
-          keys: keyDisplayItem,
-          values: Object.values(valueDisplayItem)
-        },
-      });
+      const Params = { assetid: datasource.id }
+      this.assetService.GetHistoryAssignment(Params)
+        .subscribe(res => {
+          this.historyAssignment = res;
+          console.log(this.historyAssignment)
+          const dialogRef = this.dialog.open(AssetModalComponent, {
+
+            data: {
+              title: "Detailed Assignment Information",
+              keys: keyDisplayItem,
+              values: Object.values(valueDisplayItem),
+              history: this.historyAssignment
+            },
+          });
+        })
     }
+  }
+
+  //-----event binding from template
+  onClickYes(res: string) {
+    //do something before close dialog
+    // if (res === "CheckBtnIsClicked") {
+    //   this.AcceptAssignment(this.currentId);
+    //   this.checkcomponent.closeDialog();
+    // }
+    // if (res === "CancelBtnIsClicked") {
+    //   this.DeclineAssignment(this.currentId);
+    //   this.canclecomponent.closeDialog();
+    // }
+    // if (res === "ArrowcircleBtnIsClicked") {
+    //   this.RequestForReturning({ Id: this.currentId, UserId: localStorage.getItem('userId') ?? '' });
+    //   this.arrowcirclecomponent.closeDialog();
+    // }
+    // this.LoadData();
+    console.log("Emit event click yes " + res + " " + this.currentId)
+  }
+  onBtnInRowClicked(asset: string) {
+    //Prevent popup detail info before turn on popup of button
+    this.isOpenModalDetail = false;
+    //Update id object
+    this.UpdateAssetId(asset)
+  }
+  UpdateIsOpenModalDetail() {
+    this.isOpenModalDetail = true;
+  }
+  
+  //--------------//
+  UpdateAssetId(asset: string) {
+    this.currentId = asset;
   }
 }

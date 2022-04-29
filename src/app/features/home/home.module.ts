@@ -15,7 +15,7 @@ import { ArrowcirclebtnComponent } from 'src/app/shared/button/arrowcirclebtn/ar
 
 
 @NgModule({
-  declarations: [HomeComponent, HometableComponent,CheckbtnComponent,CancelbtnComponent, ArrowcirclebtnComponent, StatePipe],
+  declarations: [HomeComponent, HometableComponent, CheckbtnComponent, CancelbtnComponent, ArrowcirclebtnComponent, StatePipe],
   imports: [
     HomeRoutingModule,
     CommonModule,

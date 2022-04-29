@@ -12,7 +12,9 @@ export class ArrowcirclebtnComponent implements OnInit {
   @Input() public isDisable! : boolean;
   @Input() public title! : string;
   @Input() public message! : string;
-  
+  @Input() public confirmBtn! : string;
+  @Input() public cancelBtn! : string;
+
   @Output() arrowcirclebtnClickYes = new EventEmitter<string>();
   @Output() afterModalClose = new EventEmitter();
 
@@ -28,7 +30,9 @@ export class ArrowcirclebtnComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalbtnComponent, {
       data: {
         title: this.title,
-        message: this.message
+        message: this.message,
+        confirmBtn: this.confirmBtn,
+        cancelBtn: this.cancelBtn
       },
     })
 

@@ -3,4 +3,11 @@
 }
 .dialogDetailInfoContent_keys{
     margin-right: 10%;
+    width: 10rem;
+}
+.myassignment-table-container{
+    width: 30rem;
+}
+.myassignment-table{
+    width: 100%;
 }

@@ -8,6 +8,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class AssetModalComponent implements OnInit {
 
+  displayedColumns: string[] = ['assignedDate', 'assignedTo', 'assignedBy', 'returnDate'];
+
   constructor(
     public dialogRef: MatDialogRef<AssetModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,

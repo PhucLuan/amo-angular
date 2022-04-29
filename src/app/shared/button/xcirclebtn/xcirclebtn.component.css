@@ -1,0 +1,37 @@
+.x-circle-fill_ine {
+    overflow: visible;
+    /* position: absolute; */
+    width: 17px;
+    height: 17px;
+    /* left: 0px;
+    top: 0px; */
+    transform: matrix(1,0,0,1,0,0);
+}
+#x-circle-fill_ine {
+    opacity: 0.5;
+    fill: rgba(239,241,245,1);
+    stroke: rgba(207,35,56,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.x-circle-fill_ina {
+    overflow: visible;
+    /* position: absolute; */
+    width: 17px;
+    height: 17px;
+    /* left: 0px;
+    top: 0px; */
+    transform: matrix(1,0,0,1,0,0);
+}
+#x-circle-fill_ina {
+    fill: rgba(239,241,245,1);
+    stroke: rgba(207,35,56,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}

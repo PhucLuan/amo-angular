@@ -9,7 +9,7 @@ export class AssetService {
 
   public stateSelected$ = new BehaviorSubject<any>({});
   public categorySelected$ = new BehaviorSubject<any>({});
-
+  public searchKey$ = new BehaviorSubject<string>('');
   constructor(private httpClient: HttpClient) { }
 
   GetAsset(filter: any): Observable<any> {
@@ -17,13 +17,22 @@ export class AssetService {
       `https://localhost:5011/api/Asset/find`,filter
     );
   }
-  // getFilter: () => {
-  //   const url = `api/Asset/GetFilterAssetAsync`;
-  //   return amoClient.get(url);
-  // },
+
   GetFilter() : Observable<any> {
     return this.httpClient.get<any>(
       `https://localhost:5011/api/Asset/GetFilterAssetAsync`
+    );
+  }
+
+  GetHistoryAssignment(params: any) : Observable<any> {
+    return this.httpClient.get<any>(
+      `https://localhost:5011/api/Assignment/Gethistory`,{params}
+    );
+  }
+
+  IsAssetExitInAssignmentAsync(assetId: any) : Observable<any> {
+    return this.httpClient.get<any>(
+      `https://localhost:5011/api/Asset/IsAssetExitInAssignmentAsync/${assetId}`
     );
   }
 }

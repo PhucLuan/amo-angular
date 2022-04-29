@@ -12,6 +12,7 @@ import { AssetFilterComponent } from './asset-filter/asset-filter.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AssetModalComponent } from './asset-modal/asset-modal.component';
+import { XcirclebtnComponent } from 'src/app/shared/button/xcirclebtn/xcirclebtn.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AssetModalComponent } from './asset-modal/asset-modal.component';
     ManageassetComponent,
     AssetTableComponent,
     AssetFilterComponent,
-    AssetModalComponent
+    AssetModalComponent,
+    XcirclebtnComponent
   ],
   imports: [
     CommonModule,

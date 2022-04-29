@@ -28,6 +28,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 //import { CheckbtnComponent } from './shared/button/checkbtn/checkbtn.component';
 //import { CancelbtnComponent } from './shared/button/cancelbtn/cancelbtn.component';
 import { ModalbtnComponent } from './shared/button/modalbtn/modalbtn.component';
+import { MatButtonModule } from '@angular/material/button';
 //import { ReactiveFormsModule } from '@angular/forms';
 //import { MatSelectModule } from '@angular/material/select';
 //import { XcirclebtnComponent } from './shared/button/xcirclebtn/xcirclebtn.component';
@@ -73,6 +74,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     // MatCardModule,
     MatDialogModule,
     MatIconModule,
+    MatButtonModule,
     //ReactiveFormsModule,
     //MatSelectModule,
     AuthModule.forRoot(),

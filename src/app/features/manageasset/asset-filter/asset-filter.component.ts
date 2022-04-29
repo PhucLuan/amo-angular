@@ -19,7 +19,8 @@ export class AssetFilterComponent implements OnInit {
 
   public categoryList: any
   public stateList: any
-
+  public stateSlectedString! : string
+  public searchKey$ = new BehaviorSubject<string>('');
   ngOnInit(): void {
     this.assetService.GetFilter()
       .subscribe(
@@ -29,8 +30,9 @@ export class AssetFilterComponent implements OnInit {
         }
       )
   }
-  public stateSlectedString! : string
+
   ngAfterViewInit(): void {
+
     this.StateSelect.valueChanges
     .pipe(
       map(data => {
@@ -38,6 +40,7 @@ export class AssetFilterComponent implements OnInit {
       })
     )
     .subscribe(res => this.assetService.stateSelected$.next({type : 'state', value : res}))
+
     this.CategorySelect.valueChanges
     .pipe(
       map(data => {
@@ -45,6 +48,7 @@ export class AssetFilterComponent implements OnInit {
       })
     )
     .subscribe(res => this.assetService.categorySelected$.next({type : 'category', value : res}))
-    //this.CategorySelect.valueChanges.subscribe(res => console.log(res))
+
+    this.searchKey$.subscribe(res => this.assetService.searchKey$.next(res))
   }
 }
