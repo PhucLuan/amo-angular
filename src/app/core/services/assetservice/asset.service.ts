@@ -35,4 +35,14 @@ export class AssetService {
       `https://localhost:5011/api/Asset/IsAssetExitInAssignmentAsync/${assetId}`
     );
   }
+  // delete: (id) => {
+  //   const url = `api/Asset/${id}`;
+  //   return amoClient.delete(url);
+  // },
+
+  DeleteAsset(assetId: any) : Observable<any> {
+    return this.httpClient.delete<any>(
+      `https://localhost:5011/api/Asset/${assetId}`
+    );
+  }
 }

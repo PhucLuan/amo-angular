@@ -7,6 +7,7 @@ import { BehaviorSubject, catchError, debounceTime, distinctUntilChanged, map, m
 import { AssetItem } from 'src/app/core/models/asset-item';
 import { AssetService } from 'src/app/core/services/assetservice/asset.service';
 import { AssetModalComponent } from '../asset-modal/asset-modal.component';
+import { AssetDeleteModalComponent } from '../asset-delete-modal/asset-delete-modal.component';
 
 @Component({
   selector: 'app-asset-table',
@@ -55,7 +56,6 @@ export class AssetTableComponent implements AfterViewInit {
       .pipe(
         startWith({}),
         switchMap((searchTerm) => {
-          console.log(searchTerm.toString())
           if (searchTerm.type == 'category') {
             this.categoryFilter = searchTerm.value;
           }
@@ -130,35 +130,65 @@ export class AssetTableComponent implements AfterViewInit {
   }
 
   //-----event binding from template
-  onClickYes(res: string) {
-    //do something before close dialog
-    // if (res === "CheckBtnIsClicked") {
-    //   this.AcceptAssignment(this.currentId);
-    //   this.checkcomponent.closeDialog();
-    // }
-    // if (res === "CancelBtnIsClicked") {
-    //   this.DeclineAssignment(this.currentId);
-    //   this.canclecomponent.closeDialog();
-    // }
-    // if (res === "ArrowcircleBtnIsClicked") {
-    //   this.RequestForReturning({ Id: this.currentId, UserId: localStorage.getItem('userId') ?? '' });
-    //   this.arrowcirclecomponent.closeDialog();
-    // }
-    // this.LoadData();
-    console.log("Emit event click yes " + res + " " + this.currentId)
-  }
-  onBtnInRowClicked(asset: string) {
+  onBtnInRowClicked(assetId: string) {
     //Prevent popup detail info before turn on popup of button
     this.isOpenModalDetail = false;
     //Update id object
-    this.UpdateAssetId(asset)
+    this.UpdateAssetId(assetId)
   }
-  UpdateIsOpenModalDetail() {
-    this.isOpenModalDetail = true;
+
+  OnClickDeleteAsset(assetId: string) {
+    this.onBtnInRowClicked(assetId)
+    this.assetService.IsAssetExitInAssignmentAsync(assetId)
+      .subscribe(
+        x => {
+
+          if (x == true) {
+            const dialogRef = this.dialog.open(AssetDeleteModalComponent, {
+              data: {
+                title: "Cannot Delete Asset",
+                isExited: true
+              },
+            });
+
+            dialogRef.componentInstance.dialogRef.afterClosed()
+              .subscribe(() => {
+                this.UpdateIsOpenModalDetail()
+              })
+          } else {
+            const dialogRef = this.dialog.open(AssetDeleteModalComponent, {
+              data: {
+                title: "Are you sure?",
+                message: "Do you want to delete this asset?",
+                confirmBtn: "Delete",
+                cancelBtn: "Cancel",
+                isExited: false
+              },
+            });
+
+            dialogRef.componentInstance.ClickYes$.subscribe((res) => {
+              console.log("delete")
+              this.assetService.DeleteAsset(this.currentId).subscribe(
+                x => console.log(x)
+              )
+              this.dialog.closeAll();
+              this.LoadData();
+            });
+
+            dialogRef.componentInstance.dialogRef.afterClosed()
+              .subscribe(() => {
+                this.UpdateIsOpenModalDetail()
+              })
+          }
+        }
+      )
   }
-  
   //--------------//
   UpdateAssetId(asset: string) {
     this.currentId = asset;
+  }
+
+  UpdateIsOpenModalDetail() {
+    this.isOpenModalDetail = true;
   }
 }

@@ -1,3 +1,4 @@
+import { AssetFormComponent } from './asset-form/asset-form.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShellService } from '../layout/shell.service';
@@ -8,6 +9,16 @@ const routes: Routes = [
     {
       path: 'asset',
       component: ManageassetComponent,
+      data: { title: 'Asset' },
+    },
+    {
+      path: 'asset/CreateAsset',
+      component: AssetFormComponent,
+      data: { title: 'Asset' },
+    },
+    {
+      path: 'asset/EditAsset/:id',
+      component: AssetFormComponent,
       data: { title: 'Asset' },
     },
   ]),

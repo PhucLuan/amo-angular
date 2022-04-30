@@ -12,7 +12,9 @@ import { AssetFilterComponent } from './asset-filter/asset-filter.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AssetModalComponent } from './asset-modal/asset-modal.component';
-import { XcirclebtnComponent } from 'src/app/shared/button/xcirclebtn/xcirclebtn.component';
+import { AssetDeleteModalComponent } from './asset-delete-modal/asset-delete-modal.component';
+import { MatButtonModule } from '@angular/material/button';
+import { AssetFormComponent } from './asset-form/asset-form.component';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { XcirclebtnComponent } from 'src/app/shared/button/xcirclebtn/xcirclebtn
     AssetTableComponent,
     AssetFilterComponent,
     AssetModalComponent,
-    XcirclebtnComponent
+    AssetDeleteModalComponent,
+    AssetFormComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,8 @@ import { XcirclebtnComponent } from 'src/app/shared/button/xcirclebtn/xcirclebtn
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule
   ]
 })
 export class ManageassetModule { }
