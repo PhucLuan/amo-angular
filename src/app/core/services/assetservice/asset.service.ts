@@ -35,14 +35,32 @@ export class AssetService {
       `https://localhost:5011/api/Asset/IsAssetExitInAssignmentAsync/${assetId}`
     );
   }
-  // delete: (id) => {
-  //   const url = `api/Asset/${id}`;
-  //   return amoClient.delete(url);
-  // },
 
   DeleteAsset(assetId: any) : Observable<any> {
     return this.httpClient.delete<any>(
       `https://localhost:5011/api/Asset/${assetId}`
     );
   }
+
+  CreateAsset(asset: any) : Observable<any> {
+    return this.httpClient.post<any>(
+      `https://localhost:5011/api/Asset`,asset
+    );
+  }
+
+  GetAssetById(assetId: any) : Observable<any> {
+    return this.httpClient.get<any>(
+      `https://localhost:5011/api/Asset/${assetId}`
+    );
+  }
+
+  EditAsset(asset: any) : Observable<any> {
+    return this.httpClient.put<any>(
+      `https://localhost:5011/api/Asset`,asset
+    );
+  }
+  // put: (asset) => {
+  //   const url = `api/Asset`;
+  //   return amoClient.put(url, asset)
+  // }
 }

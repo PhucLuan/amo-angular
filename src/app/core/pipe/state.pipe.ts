@@ -1,8 +1,12 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root',
+})
 @Pipe({
   name: 'statePipe',
 })
+
 export class StatePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {

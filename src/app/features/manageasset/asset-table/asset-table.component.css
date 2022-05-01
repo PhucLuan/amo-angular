@@ -12,6 +12,12 @@
     border-color: currentColor;
 }
 
+.grbtn-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .x-circle-fill_ine {
     overflow: visible;
     /* position: absolute; */
@@ -19,18 +25,20 @@
     height: 17px;
     /* left: 0px;
     top: 0px; */
-    transform: matrix(1,0,0,1,0,0);
+    transform: matrix(1, 0, 0, 1, 0, 0);
 }
+
 #x-circle-fill_ine {
     opacity: 0.5;
-    fill: rgba(239,241,245,1);
-    stroke: rgba(207,35,56,1);
+    fill: rgba(239, 241, 245, 1);
+    stroke: rgba(207, 35, 56, 1);
     stroke-width: 1px;
     stroke-linejoin: miter;
     stroke-linecap: butt;
     stroke-miterlimit: 4;
     shape-rendering: auto;
 }
+
 .x-circle-fill_ina {
     overflow: visible;
     /* position: absolute; */
@@ -38,14 +46,44 @@
     height: 17px;
     /* left: 0px;
     top: 0px; */
-    transform: matrix(1,0,0,1,0,0);
+    transform: matrix(1, 0, 0, 1, 0, 0);
 }
+
 #x-circle-fill_ina {
-    fill: rgba(239,241,245,1);
-    stroke: rgba(207,35,56,1);
+    fill: rgba(239, 241, 245, 1);
+    stroke: rgba(207, 35, 56, 1);
     stroke-width: 1px;
     stroke-linejoin: miter;
     stroke-linecap: butt;
     stroke-miterlimit: 4;
     shape-rendering: auto;
+}
+
+.edit_icon_ind {
+    overflow: visible;
+    /* position: absolute; */
+    width: 16.001px;
+    height: 16px;
+    /* left: 0px;
+    top: 0px; */
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+#edit_icon_ind {
+    opacity: 0.5;
+    fill: rgba(112, 112, 112, 1);
+}
+
+.edit_icon_inb {
+    overflow: visible;
+    /* position: absolute; */
+    width: 16.001px;
+    height: 16px;
+    /* left: 0px;
+    top: 0px; */
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+#edit_icon_inb {
+    fill: rgba(112, 112, 112, 1);
 }

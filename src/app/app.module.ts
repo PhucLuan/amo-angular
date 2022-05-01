@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 // import { WelcomeComponent } from './features/welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule, OidcConfigService } from 'angular-auth-oidc-client';
-import { MatPaginatorModule } from '@angular/material/paginator';
+//import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeModule } from './features/home/home.module';
 import { LayoutModule } from './features/layout/layout.module';
@@ -29,6 +29,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 //import { CancelbtnComponent } from './shared/button/cancelbtn/cancelbtn.component';
 import { ModalbtnComponent } from './shared/button/modalbtn/modalbtn.component';
 import { MatButtonModule } from '@angular/material/button';
+import { ManageAssignmentModule } from './features/manage-assignment/manage-assignment.module';
+//import { StatePipe } from './core/pipe/state.pipe';
 //import { ReactiveFormsModule } from '@angular/forms';
 //import { MatSelectModule } from '@angular/material/select';
 //import { XcirclebtnComponent } from './shared/button/xcirclebtn/xcirclebtn.component';
@@ -84,6 +86,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     LayoutModule,
     ManageassetModule,
     ManageuserModule,
+    ManageAssignmentModule,
     WelcomeModule,
     AppRoutingModule,
     BrowserModule,

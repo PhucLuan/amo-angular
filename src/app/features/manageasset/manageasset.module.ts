@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AssetFormComponent } from './asset-form/asset-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -38,8 +39,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatCardModule,
     MatSelectModule,
     MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule
+    MatRadioModule
   ]
 })
 export class ManageassetModule { }

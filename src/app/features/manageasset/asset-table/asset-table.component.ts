@@ -8,6 +8,7 @@ import { AssetItem } from 'src/app/core/models/asset-item';
 import { AssetService } from 'src/app/core/services/assetservice/asset.service';
 import { AssetModalComponent } from '../asset-modal/asset-modal.component';
 import { AssetDeleteModalComponent } from '../asset-delete-modal/asset-delete-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-asset-table',
@@ -35,7 +36,7 @@ export class AssetTableComponent implements AfterViewInit {
   stateFilter = "";
   categoryFilter = "";
   searchFilter = "";
-  constructor(private assetService: AssetService, public dialog: MatDialog) { }
+  constructor(private assetService: AssetService, public dialog: MatDialog, private router: Router) { }
 
   ngAfterViewInit(): void {
     // If the user changes the sort order, reset back to the first page.
@@ -182,6 +183,9 @@ export class AssetTableComponent implements AfterViewInit {
           }
         }
       )
+  }
+  OnClickEditAsset(assetId: string) {
+    this.router.navigate([`asset/EditAsset/${assetId}`])
   }
   //--------------//
   UpdateAssetId(asset: string) {
