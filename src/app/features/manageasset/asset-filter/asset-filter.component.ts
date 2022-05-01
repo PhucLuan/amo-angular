@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
+import { Router } from '@angular/router';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, map, merge, Observable, startWith, switchMap } from 'rxjs';
 import { AssetService } from 'src/app/core/services/assetservice/asset.service';
 
@@ -15,12 +16,13 @@ export class AssetFilterComponent implements OnInit {
   public StateSelect = new FormControl();
   public CategorySelect = new FormControl();
 
-  constructor(private assetService: AssetService) { }
+  constructor(private assetService: AssetService, private router: Router) { }
 
   public categoryList: any
   public stateList: any
   public stateSlectedString! : string
   public searchKey$ = new BehaviorSubject<string>('');
+
   ngOnInit(): void {
     this.assetService.GetFilter()
       .subscribe(
@@ -50,5 +52,9 @@ export class AssetFilterComponent implements OnInit {
     .subscribe(res => this.assetService.categorySelected$.next({type : 'category', value : res}))
 
     this.searchKey$.subscribe(res => this.assetService.searchKey$.next(res))
+  }
+
+  onClickCreateAsset(){
+    this.router.navigate(['/asset/CreateAsset'])
   }
 }
