@@ -59,19 +59,17 @@ export class AssetFormComponent implements OnInit {
     if (this.isAddMode) {
       this.assetService.CreateAsset(this.assetForm.value)
         .subscribe(
-          x => {
-            console.log(x);
+          () => {
             this.router.navigate(['/asset'])
           }
         )
     }
     else {
       var asset = { ...{ id: this.assetId }, ...this.assetForm.getRawValue() };
-      console.log(asset)
+    
       this.assetService.EditAsset(asset)
         .subscribe(
-          x => {
-            console.log(x);
+          () => {
             this.router.navigate(['/asset'])
           }
         )

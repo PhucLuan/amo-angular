@@ -1,1 +1,21 @@
 <p>assignment-form works!</p>
+<form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()" class="example-form">
+<label for="asset">Asset: </label>
+<input (click)="ClickGetAsset($event)" id="assetName" type="text" formControlName="assetName"/>
+<br/>
+
+<label for="assignedDate">Assigned Date: </label>
+<input id="assignedDate" type="date" formControlName="assignedDate" min="{{defaultdate | date:'yyyy-MM-dd'}}"/>
+<br/>
+
+<label for="note">Note: </label>
+<input id="note" type="text" formControlName="note"/>
+<br/>
+
+<button mat-raised-button color="warn" type="submit" [disabled]="!assignmentForm.valid">
+    Save
+</button>
+<button mat-raised-button (click)="OnCancelClick()">
+    Cancel
+</button>
+</form>

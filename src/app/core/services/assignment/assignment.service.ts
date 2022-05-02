@@ -10,6 +10,9 @@ export class AssignmentService {
   public stateSelected$ = new BehaviorSubject<any>({});
   public assignedDateSelected$ = new BehaviorSubject<any>({});
   public searchKey$ = new BehaviorSubject<any>({});
+
+  public asset$ = new BehaviorSubject<any>({});
+
   constructor(private httpClient: HttpClient) { }
 
   GetAssignment(filter: any): Observable<any> {
@@ -32,8 +35,18 @@ export class AssignmentService {
       `https://localhost:5011/api/Asset/GetFilterAssetAsync`
     );
   }
-  // delete: (id) => {
+  // get: (id) => {
   //   const url = `api/Assignment/${id}`;
-  //   return amoClient.delete(url);
+  //   return amoClient.get(url);
   // },
+  FindAssetAvailable(filterAsset : any) : Observable<any> {
+    return this.httpClient.post<any>(
+      `https://localhost:5011/api/Asset/find/available`,filterAsset
+    );
+  }
+  GetAssignmentById(assignmentId : any) :  Observable<any> {
+    return this.httpClient.get<any>(
+      `https://localhost:5011/api/Assignment/${assignmentId}`
+    );
+  }
 }
