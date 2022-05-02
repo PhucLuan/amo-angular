@@ -1,0 +1,49 @@
+.myassignment-table {
+    width: 100%;
+}
+
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+    border-color: currentColor;
+}
+
+.grbtn-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.edit_icon_ind {
+    overflow: visible;
+    /* position: absolute; */
+    width: 16.001px;
+    height: 16px;
+    /* left: 0px;
+    top: 0px; */
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+#edit_icon_ind {
+    opacity: 0.5;
+    fill: rgba(112, 112, 112, 1);
+}
+
+.edit_icon_inb {
+    overflow: visible;
+    /* position: absolute; */
+    width: 16.001px;
+    height: 16px;
+    /* left: 0px;
+    top: 0px; */
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+#edit_icon_inb {
+    fill: rgba(112, 112, 112, 1);
+}

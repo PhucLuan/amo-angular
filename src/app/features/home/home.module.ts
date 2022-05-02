@@ -10,11 +10,11 @@ import { HomeComponent } from './home.component';
 import { HometableComponent } from './hometable/hometable.component';
 import { CheckbtnComponent } from 'src/app/shared/button/checkbtn/checkbtn.component';
 import { CancelbtnComponent } from 'src/app/shared/button/cancelbtn/cancelbtn.component';
-import { ArrowcirclebtnComponent } from 'src/app/shared/button/arrowcirclebtn/arrowcirclebtn.component';
+import { ShareModule } from 'src/app/shared/share/share.module';
 
 
 @NgModule({
-  declarations: [HomeComponent, HometableComponent, CheckbtnComponent, CancelbtnComponent, ArrowcirclebtnComponent],
+  declarations: [HomeComponent, HometableComponent, CheckbtnComponent, CancelbtnComponent,],
   imports: [
     HomeRoutingModule,
     CommonModule,
@@ -22,6 +22,7 @@ import { ArrowcirclebtnComponent } from 'src/app/shared/button/arrowcirclebtn/ar
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
+    ShareModule
   ]
 })
 export class HomeModule { }

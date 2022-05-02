@@ -120,7 +120,7 @@ export class AssetTableComponent implements AfterViewInit {
           const dialogRef = this.dialog.open(AssetModalComponent, {
 
             data: {
-              title: "Detailed Assignment Information",
+              title: "Detailed Asset Information",
               keys: keyDisplayItem,
               values: Object.values(valueDisplayItem),
               history: this.historyAssignment

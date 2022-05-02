@@ -45,4 +45,8 @@ export class XcirclebtnComponent implements OnInit {
       this.afterModalClose.emit();
     })
   }
+
+  closeDialog(): void {
+    this.dialog.closeAll();
+  };
 }

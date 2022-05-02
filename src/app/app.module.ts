@@ -30,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalbtnComponent } from './shared/button/modalbtn/modalbtn.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ManageAssignmentModule } from './features/manage-assignment/manage-assignment.module';
+//import { AssignmentFormComponent } from './features/manageassignment/assignment-form/assignment-form.component';
 //import { StatePipe } from './core/pipe/state.pipe';
 //import { ReactiveFormsModule } from '@angular/forms';
 //import { MatSelectModule } from '@angular/material/select';
@@ -58,6 +59,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     ModalDetailInfoComponent,
     //CancelbtnComponent,
     ModalbtnComponent,
+    //AssignmentFormComponent,
     //XcirclebtnComponent,
     //ArrowcirclebtnComponent,
     //HomeComponent,
