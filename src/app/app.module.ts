@@ -19,7 +19,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeModule } from './features/home/home.module';
 import { LayoutModule } from './features/layout/layout.module';
 import { ManageassetModule } from './features/manageasset/manageasset.module';
-import { ManageuserModule } from './features/manageuser/manageuser.module';
 import { AuthenticationGuard } from './core/authentication/authentication.guard';
 import { AuthInterceptorService } from './core/services/auth-interceptor.service';
 import { WelcomeModule } from './features/welcome/welcome.module';
@@ -30,6 +29,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalbtnComponent } from './shared/button/modalbtn/modalbtn.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ManageAssignmentModule } from './features/manage-assignment/manage-assignment.module';
+import { ManageuserModule } from './features/manageuser/manageuser.module';
+//import { ManageuserTableComponent } from './features/manageuser/manageuser-table/manageuser-table.component';
 //import { AssignmentFormComponent } from './features/manageassignment/assignment-form/assignment-form.component';
 //import { StatePipe } from './core/pipe/state.pipe';
 //import { ReactiveFormsModule } from '@angular/forms';
@@ -59,6 +60,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     ModalDetailInfoComponent,
     //CancelbtnComponent,
     ModalbtnComponent,
+    //ManageuserTableComponent
     //AssignmentFormComponent,
     //XcirclebtnComponent,
     //ArrowcirclebtnComponent,

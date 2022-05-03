@@ -1,16 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentService } from 'src/app/core/services/assignment/assignment.service';
 import { AssetPopupComponent } from '../asset-popup/asset-popup.component';
 import { UserPopupComponent } from '../user-popup/user-popup.component';
 
+// export function AssignedDateValidator(): ValidatorFn {
+//   return (control: AbstractControl): ValidationErrors | null => {
+//     const currentDate = new Date();
+//     console.log(control.value)
+//     //const assignedDateValidator = nameRe.test(control.value);
+//     return control.value < currentDate ? {invalidAssignedDate: true} : null;
+//   };
+// }
+
+export function AssignedDateValidator(control: AbstractControl){
+  const today = new Date().setHours(0,0,0,0);
+  const assignedDate = new Date(control.value).setHours(0,0,0,0);
+  return assignedDate < today ? {invalidAssignedDate: true} : null;
+}
+
 @Component({
   selector: 'app-assignment-form',
   templateUrl: './assignment-form.component.html',
   styleUrls: ['./assignment-form.component.css']
 })
+
 export class AssignmentFormComponent implements OnInit {
 
   public defaultdate = new Date();
@@ -23,7 +39,7 @@ export class AssignmentFormComponent implements OnInit {
     assignedTo: ['', Validators.required],
     assetID: ['', Validators.required],
     assetName: ['', Validators.required],
-    assignedDate: [this.FormatDate(this.defaultdate.toISOString().split('T')[0]), Validators.required],
+    assignedDate: [this.FormatDate(this.defaultdate.toISOString().split('T')[0]), [Validators.required,AssignedDateValidator]],
     note: ['', Validators.required],
   });
 
@@ -102,8 +118,8 @@ export class AssignmentFormComponent implements OnInit {
     }
     else{
       console.log("Edit", newObj)
-      this.assignmentService.UpdateAssignment(this.assignmentId ?? '' ,newObj).subscribe(x => console.log(x));
-      this.router.navigate(['/assignment'])
+      //this.assignmentService.UpdateAssignment(this.assignmentId ?? '' ,newObj).subscribe(x => console.log(x));
+      //this.router.navigate(['/assignment'])
     }
       
   }

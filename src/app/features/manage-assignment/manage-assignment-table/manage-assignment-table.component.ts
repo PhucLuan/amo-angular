@@ -83,15 +83,6 @@ export class ManageAssignmentTableComponent implements AfterViewInit {
           if (searchTerm.type == 'assignedDate') {
             this.dateFilter = searchTerm.value;
           }
-          // if (searchTerm && typeof searchTerm == 'string') {
-          //   this.searchFilter = searchTerm.toString();
-
-          // }
-          // else
-          //   //keep value of search string when change filter
-          //   if (!(searchTerm.type == 'state' || typeof searchTerm == 'object')) {
-          //     this.searchFilter = ""
-          //   }
 
           return this.assignmentService!.GetAssignment({
             assignedDate: this.dateFilter,

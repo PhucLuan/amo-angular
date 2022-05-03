@@ -1,24 +1,54 @@
 <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()" class="example-form">
-<label for="asset">Asset: </label>
-<input (click)="ClickGetAsset($event)" id="assetName" type="text" formControlName="assetName"/>
-<br/>
+    <label for="asset">Asset: </label>
+    <input (click)="ClickGetAsset($event)" id="assetName" type="text" formControlName="assetName" />
+    <div *ngIf="assignmentForm.get('assetName')?.invalid && (assignmentForm.get('assetName')?.dirty || assignmentForm.get('assetName')?.touched)"
+        class="alert alert-danger">
 
-<label for="assignedTo">User: </label>
-<input (click)="ClickGetUser($event)" id="assignedTo" type="text" formControlName="assignedTo"/>
-<br/>
+        <div *ngIf="assignmentForm.get('assetName')?.errors?.['required']">
+            Asset is required.
+        </div>
+    </div>
+    <br />
 
-<label for="assignedDate">Assigned Date: </label>
-<input id="assignedDate" type="date" formControlName="assignedDate" min="{{defaultdate | date:'yyyy-MM-dd'}}"/>
-<br/>
+    <label for="assignedTo">User: </label>
+    <input (click)="ClickGetUser($event)" id="assignedTo" type="text" formControlName="assignedTo" />
+    <div *ngIf="assignmentForm.get('assignedTo')?.invalid && (assignmentForm.get('assignedTo')?.dirty || assignmentForm.get('assignedTo')?.touched)"
+        class="alert alert-danger">
 
-<label for="note">Note: </label>
-<input id="note" type="text" formControlName="note"/>
-<br/>
+        <div *ngIf="assignmentForm.get('assignedTo')?.errors?.['required']">
+            User is required.
+        </div>
+    </div>
+    <br />
 
-<button mat-raised-button color="warn" type="submit" [disabled]="!assignmentForm.valid">
-    Save
-</button>
-<button mat-raised-button (click)="OnCancelClick()">
-    Cancel
-</button>
+    <label for="assignedDate">Assigned Date: </label>
+    <input id="assignedDate" type="date" formControlName="assignedDate" min="{{defaultdate | date:'yyyy-MM-dd'}}" />
+    <div *ngIf="assignmentForm.get('assignedDate')?.invalid" class="alert alert-danger">
+
+        <div *ngIf="assignmentForm.get('assignedDate')?.errors?.['required']">
+            Assigned Date is required.
+        </div>
+        <div *ngIf="assignmentForm.get('assignedDate')?.errors?.['invalidAssignedDate']">
+            Assigned Date must be greater than or equal to today.
+        </div>
+    </div>
+    <br />
+
+    <label for="note">Note: </label>
+    <input id="note" type="text" formControlName="note" />
+    <div *ngIf="assignmentForm.get('note')?.invalid && (assignmentForm.get('note')?.dirty || assignmentForm.get('note')?.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="assignmentForm.get('note')?.errors?.['required']">
+            Note is required.
+        </div>
+    </div>
+    <br />
+
+    <button mat-raised-button color="warn" type="submit" [disabled]="!assignmentForm.valid">
+        Save
+    </button>
+    <button mat-raised-button (click)="OnCancelClick()">
+        Cancel
+    </button>
 </form>

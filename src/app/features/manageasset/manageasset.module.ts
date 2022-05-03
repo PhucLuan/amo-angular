@@ -18,6 +18,7 @@ import { AssetFormComponent } from './asset-form/asset-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatRadioModule} from '@angular/material/radio';
+import { ShareModule } from 'src/app/shared/share/share.module';
 
 @NgModule({
   declarations: [
@@ -33,13 +34,14 @@ import {MatRadioModule} from '@angular/material/radio';
     FormsModule,
     ReactiveFormsModule,
     ManageassetRoutingModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatCardModule,
+    // MatTableModule,
+    // MatPaginatorModule,
+    // MatSortModule,
+    // MatCardModule,
     MatSelectModule,
     MatButtonModule,
-    MatRadioModule
+    MatRadioModule,
+    ShareModule
   ]
 })
 export class ManageassetModule { }
