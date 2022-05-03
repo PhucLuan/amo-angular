@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { AssetPopupComponent } from './asset-popup/asset-popup.component';
+import { UserPopupComponent } from './user-popup/user-popup.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AssetPopupComponent } from './asset-popup/asset-popup.component';
     ManageAssignmentFilterComponent,
     XcirclebtnComponent,
     AssignmentFormComponent,
-    AssetPopupComponent
+    AssetPopupComponent,
+    UserPopupComponent
   ],
   imports: [
     CommonModule,

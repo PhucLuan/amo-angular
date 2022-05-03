@@ -40,18 +40,12 @@ export class ManageAssignmentFilterComponent implements OnInit {
     )
     .subscribe(res => this.assignmentService.stateSelected$.next({type : 'state', value : res}))
 
-    // this.CategorySelect.valueChanges
-    // .pipe(
-    //   map(data => {
-    //     return data.join(" ")
-    //   })
-    // )
-    // .subscribe(res => this.assetService.categorySelected$.next({type : 'category', value : res}))
-
     this.searchKey$.subscribe(res => this.assignmentService.searchKey$.next({type : 'searchKey', value : res}))
     this.assignedDateSelected$.subscribe(res => this.assignmentService.searchKey$.next({type : 'assignedDate', value : res}))
   }
   onClickCreateAsset(){
+    this.assignmentService.asset$.next({});
+    this.assignmentService.user$.next({});
     this.router.navigate(['/assignment/CreateAssignment'])
   }
 }

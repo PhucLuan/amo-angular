@@ -1,7 +1,10 @@
-<p>assignment-form works!</p>
 <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()" class="example-form">
 <label for="asset">Asset: </label>
 <input (click)="ClickGetAsset($event)" id="assetName" type="text" formControlName="assetName"/>
+<br/>
+
+<label for="assignedTo">User: </label>
+<input (click)="ClickGetUser($event)" id="assignedTo" type="text" formControlName="assignedTo"/>
 <br/>
 
 <label for="assignedDate">Assigned Date: </label>

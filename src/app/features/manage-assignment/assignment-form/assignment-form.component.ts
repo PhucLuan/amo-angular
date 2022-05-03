@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentService } from 'src/app/core/services/assignment/assignment.service';
 import { AssetPopupComponent } from '../asset-popup/asset-popup.component';
+import { UserPopupComponent } from '../user-popup/user-popup.component';
 
 @Component({
   selector: 'app-assignment-form',
@@ -13,47 +14,100 @@ import { AssetPopupComponent } from '../asset-popup/asset-popup.component';
 export class AssignmentFormComponent implements OnInit {
 
   public defaultdate = new Date();
-  
-  
+  public IsAddMode: boolean = true;
+  public assignmentId: string = "";
+  public currentAssignment: any;
+
   public assignmentForm: FormGroup = this.formBuilder.group({
     userID: ['', Validators.required],
+    assignedTo: ['', Validators.required],
     assetID: ['', Validators.required],
     assetName: ['', Validators.required],
     assignedDate: [this.FormatDate(this.defaultdate.toISOString().split('T')[0]), Validators.required],
     note: ['', Validators.required],
   });
-  
+
   constructor(
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
-    private assignmentService : AssignmentService,
-    private router: Router) { }
-  
+    private assignmentService: AssignmentService,
+    private router: Router,
+    private route: ActivatedRoute,) { }
+
   ngOnInit(): void {
-  }
-  ngAfterViewInit():void{
+
     this.assignmentService.asset$.subscribe(
       x => {
-        console.log(x)
-        this.assignmentForm.patchValue({
-          assetName : x.name,
-          assetID : x.id
-        })
+        if (x !== null) {
+          this.assignmentForm.patchValue({
+            assetName: x.name,
+            assetID: x.id
+          })
+        }
+      }
+    )
+    this.assignmentService.user$.subscribe(
+      x => {
+        if (x !== null) {
+          console.log(x)
+          this.assignmentForm.patchValue({
+            assignedTo: x.userName,
+            userID: x.id
+          })
+        }
       }
     )
   }
-  ClickGetAsset(e : any): void {
-    const dialogRef = this.dialog.open(AssetPopupComponent, {
 
+  ngAfterViewInit(): void {
+    this.assignmentId = this.route.snapshot.paramMap.get('id') ?? "";
+    if (this.assignmentId !== "") {
+      this.IsAddMode = false;
+      this.assignmentService.GetAssignmentById(this.assignmentId)
+        .subscribe(
+          x => //console.log(x)
+            this.assignmentForm.patchValue({
+              assetName: x.assetName,
+              assetID: x.assetID,
+              note: x.note,
+              assignedDate: this.FormatDate(x.assignedDate),
+              userID: x.userID,
+              assignedTo: x.assignedTo
+            })
+        )
+    }
+
+  }
+
+  ClickGetAsset(e: any): void {
+    const dialogRef = this.dialog.open(AssetPopupComponent, {
       data: {
         title: "Asset List"
       },
-    }); 
+    });
   }
-  onSubmit(){
-    console.log(this.assignmentForm.value)
+  ClickGetUser(e: any): void {
+    const dialogRef = this.dialog.open(UserPopupComponent, {
+      data: {
+        title: "User List"
+      },
+    });
   }
-  OnCancelClick(){
+  onSubmit() {
+    const { assetName, assignedTo, ...newObj } = this.assignmentForm.value;
+    if (this.IsAddMode) {
+      console.log("Add", newObj)
+      this.assignmentService.CreateAssignment(newObj).subscribe(x => console.log(x));
+      this.router.navigate(['/assignment']);
+    }
+    else{
+      console.log("Edit", newObj)
+      this.assignmentService.UpdateAssignment(this.assignmentId ?? '' ,newObj).subscribe(x => console.log(x));
+      this.router.navigate(['/assignment'])
+    }
+      
+  }
+  OnCancelClick() {
     this.router.navigate(['/assignment'])
   }
   FormatDate(date: any) {

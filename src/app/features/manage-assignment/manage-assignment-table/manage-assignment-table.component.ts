@@ -162,8 +162,8 @@ export class ManageAssignmentTableComponent implements AfterViewInit {
     this.UpdateAssignmentId(assignmentId)
   }
 
-  OnClickEditAssignment(assignmentId: string) {
-    this.router.navigate([`assignment/EditAssignment/${assignmentId}`])
+  OnClickEditAssignment(assignment: any) {
+    this.router.navigate([`assignment/EditAssignment/${assignment.id}`])
   }
   //--------------//
   RequestForReturning(assignment: any): void {
