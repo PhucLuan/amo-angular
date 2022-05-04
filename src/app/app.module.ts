@@ -30,16 +30,6 @@ import { ModalbtnComponent } from './shared/button/modalbtn/modalbtn.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ManageAssignmentModule } from './features/manage-assignment/manage-assignment.module';
 import { ManageuserModule } from './features/manageuser/manageuser.module';
-//import { ManageuserTableComponent } from './features/manageuser/manageuser-table/manageuser-table.component';
-//import { AssignmentFormComponent } from './features/manageassignment/assignment-form/assignment-form.component';
-//import { StatePipe } from './core/pipe/state.pipe';
-//import { ReactiveFormsModule } from '@angular/forms';
-//import { MatSelectModule } from '@angular/material/select';
-//import { XcirclebtnComponent } from './shared/button/xcirclebtn/xcirclebtn.component';
-//import { ArrowcirclebtnComponent } from './shared/button/arrowcirclebtn/arrowcirclebtn.component';
-//import { HeaderComponent } from './shared/header/header.component';
-//import { SidebarComponent } from './shared/sidebar/sidebar.component';
-//import { StatePipe } from './core/pipe/state.pipe';
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
   return () =>
@@ -58,34 +48,14 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
   declarations: [
     AppComponent,
     ModalDetailInfoComponent,
-    //CancelbtnComponent,
     ModalbtnComponent,
-    //ManageuserTableComponent
-    //AssignmentFormComponent,
-    //XcirclebtnComponent,
-    //ArrowcirclebtnComponent,
-    //HomeComponent,
-    //LayoutComponent,
-    //ManageassetComponent,
-    //ManageuserComponent,
-    //WelcomeComponent,
-    //HeaderComponent,
-    //SidebarComponent,
-    //StatePipe
   ],
   imports: [
-    // MatTableModule,
-    // MatPaginatorModule,
-    // MatSortModule,
-    // MatCardModule,
     MatDialogModule,
     MatIconModule,
     MatButtonModule,
-    //ReactiveFormsModule,
-    //MatSelectModule,
     AuthModule.forRoot(),
     HttpClientModule,
-    //NgbModule,
     HomeModule,
     LayoutModule,
     ManageassetModule,

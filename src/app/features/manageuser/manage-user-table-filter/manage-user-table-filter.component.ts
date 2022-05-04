@@ -46,10 +46,10 @@ export class ManageUserTableFilterComponent implements OnInit {
 
     this.searchKey$.subscribe(res => this.userService.searchKey$.next({ type: 'searchKey', value: res }))
   }
-  onClickCreateAsset() {
+  onClickCreateUser() {
     // this.assignmentService.asset$.next({});
     // this.assignmentService.user$.next({});
-    this.router.navigate(['/user'])
+    this.router.navigate(['/user/CreateUser'])
   }
 
 }

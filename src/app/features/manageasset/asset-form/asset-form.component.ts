@@ -53,6 +53,12 @@ export class AssetFormComponent implements OnInit {
       this.isAddMode = false;
       this.assetForm.get('categoryId')?.disable({ onlySelf: true });
       this.InitialValue(this.assetId);
+      this.states = [
+        { id: '0', value: 'Available' },
+        { id: '1', value: 'Not Available' },
+        { id: '4', value: 'Waiting For Recycle' },
+        { id: '5', value: 'Recycled' }
+      ];
     }
   }
   onSubmit() {
@@ -66,7 +72,7 @@ export class AssetFormComponent implements OnInit {
     }
     else {
       var asset = { ...{ id: this.assetId }, ...this.assetForm.getRawValue() };
-    
+
       this.assetService.EditAsset(asset)
         .subscribe(
           () => {
@@ -94,7 +100,7 @@ export class AssetFormComponent implements OnInit {
         }
       )
   }
-  OnCancelClick(){
+  OnCancelClick() {
     this.router.navigate(['/asset'])
   }
 }

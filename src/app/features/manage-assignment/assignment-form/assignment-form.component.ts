@@ -6,15 +6,6 @@ import { AssignmentService } from 'src/app/core/services/assignment/assignment.s
 import { AssetPopupComponent } from '../asset-popup/asset-popup.component';
 import { UserPopupComponent } from '../user-popup/user-popup.component';
 
-// export function AssignedDateValidator(): ValidatorFn {
-//   return (control: AbstractControl): ValidationErrors | null => {
-//     const currentDate = new Date();
-//     console.log(control.value)
-//     //const assignedDateValidator = nameRe.test(control.value);
-//     return control.value < currentDate ? {invalidAssignedDate: true} : null;
-//   };
-// }
-
 export function AssignedDateValidator(control: AbstractControl){
   const today = new Date().setHours(0,0,0,0);
   const assignedDate = new Date(control.value).setHours(0,0,0,0);

@@ -9,13 +9,16 @@ import { ManageuserComponent } from './manageuser.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ManageuserFormComponent } from './manageuser-form/manageuser-form.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 @NgModule({
   declarations: [
     ManageuserComponent,
     ManageUserTableFilterComponent,
-    ManageUserTableComponent
+    ManageUserTableComponent,
+    ManageuserFormComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatSelectModule,
     MatButtonModule,
+    MatRadioModule,
     ShareModule
   ]
 })

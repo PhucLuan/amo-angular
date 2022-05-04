@@ -5,10 +5,6 @@ import { ManageAssignmentRoutingModule } from './manage-assignment-routing.modul
 import { ManageAssignmentComponent } from './manage-assignment.component';
 import { ManageAssignmentTableComponent } from './manage-assignment-table/manage-assignment-table.component';
 import { ManageAssignmentFilterComponent } from './manage-assignment-filter/manage-assignment-filter.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatCardModule } from '@angular/material/card';
 import { ShareModule } from 'src/app/shared/share/share.module';
 import { XcirclebtnComponent } from 'src/app/shared/button/xcirclebtn/xcirclebtn.component';
 import { AssignmentFormComponent } from './assignment-form/assignment-form.component';
@@ -35,10 +31,6 @@ import { UserPopupComponent } from './user-popup/user-popup.component';
     ManageAssignmentRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatCardModule,
     MatSelectModule,
     MatButtonModule,
     MatRadioModule,

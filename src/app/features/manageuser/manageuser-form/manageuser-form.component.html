@@ -1,0 +1,99 @@
+<div class="container">
+    <mat-card class="card">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="example-form">
+
+            <label for="firstName">First Name: </label>
+            <input id="firstName" type="text" formControlName="firstName">
+            <div *ngIf="userForm.get('firstName')?.invalid && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)"
+                class="alert alert-danger">
+
+                <div *ngIf="userForm.get('firstName')?.errors?.['required']">
+                    First Name is required.
+                </div>
+            </div>
+            <br />
+
+            <label for="lastName">Last Name: </label>
+            <input id="lastName" type="text" formControlName="lastName">
+            <div *ngIf="userForm.get('lastName')?.invalid && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)"
+                class="alert alert-danger">
+
+                <div *ngIf="userForm.get('lastName')?.errors?.['required']">
+                    Last Name is required.
+                </div>
+            </div>
+            <br />
+
+            <label for="dateOfBirth">Date of birth: </label>
+            <input id="dateOfBirth" type="date" formControlName="dateOfBirth">
+            <div *ngIf="userForm.get('dateOfBirth')?.invalid && (userForm.get('dateOfBirth')?.dirty || userForm.get('dateOfBirth')?.touched)"
+                class="alert alert-danger">
+
+                <div *ngIf="userForm.get('dateOfBirth')?.errors?.['required']">
+                    Date of birth is required.
+                </div>
+                <div *ngIf="userForm.get('dateOfBirth')?.errors?.['invalidDateOfBirth']">
+                    User is under 18. Please select a different date.
+                </div>
+            </div>
+            <br />
+
+            <label id="example-radio-group-label">Gender</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="gender-radio-group"
+                formControlName="gender">
+                <mat-radio-button class="gender-radio-button" *ngFor="let gender of genders" [value]="gender.id">
+                    {{gender.name}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <div *ngIf="userForm.get('gender')?.invalid" class="alert alert-danger">
+
+                <div *ngIf="userForm.get('gender')?.errors?.['required']">
+                    Gender is required.
+                </div>
+            </div>
+            <br />
+
+            <label for="joinedDate">Joined Date: </label>
+            <input id="joinedDate" type="date" formControlName="joinedDate">
+            <div *ngIf="userForm.get('joinedDate')?.invalid && (userForm.get('joinedDate')?.dirty || userForm.get('joinedDate')?.touched)"
+                class="alert alert-danger">
+
+                <div *ngIf="userForm.get('joinedDate')?.errors?.['required']">
+                    Joined Date is required.
+                </div>
+                <div *ngIf="userForm.get('joinedDate')?.errors?.['invalidWeekendJoinedDate']">
+                    Joined date is Saturday or Sunday. Please select a different date.
+                </div>
+
+            </div>
+            <div *ngIf="userForm.errors?.['invalidJoinedDateAfterDoB']&&userForm.get('joinedDate')?.touched" class="alert alert-danger">
+                <div>
+                    Joined date is not later than Date of Birth. Please select a different date.
+                </div>
+            </div>
+            <br />
+
+            <label for="type">Type: </label>
+            <select class="custom-select mb-3" formControlName="type">
+                <option *ngFor="let type of typeList" [ngValue]="type.id">
+                    {{ type.name }}
+                </option>
+            </select>
+            <div *ngIf="userForm.get('type')?.invalid && (userForm.get('type')?.dirty || userForm.get('type')?.touched)"
+                class="alert alert-danger">
+
+                <div *ngIf="userForm.get('type')?.errors?.['required']">
+                    Type is required.
+                </div>
+            </div>
+            <br />
+
+            <button mat-raised-button color="warn" type="submit" [disabled]="!userForm.valid">
+                Save
+            </button>
+            <button mat-raised-button (click)="OnCancelClick()">
+                Cancel
+            </button>
+        </form>
+    </mat-card>
+</div>

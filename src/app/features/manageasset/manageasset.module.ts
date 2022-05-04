@@ -15,8 +15,6 @@ import { AssetModalComponent } from './asset-modal/asset-modal.component';
 import { AssetDeleteModalComponent } from './asset-delete-modal/asset-delete-modal.component';
 import { MatButtonModule } from '@angular/material/button';
 import { AssetFormComponent } from './asset-form/asset-form.component';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatRadioModule} from '@angular/material/radio';
 import { ShareModule } from 'src/app/shared/share/share.module';
 
@@ -34,10 +32,6 @@ import { ShareModule } from 'src/app/shared/share/share.module';
     FormsModule,
     ReactiveFormsModule,
     ManageassetRoutingModule,
-    // MatTableModule,
-    // MatPaginatorModule,
-    // MatSortModule,
-    // MatCardModule,
     MatSelectModule,
     MatButtonModule,
     MatRadioModule,

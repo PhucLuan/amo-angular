@@ -18,10 +18,6 @@ import { ShareModule } from 'src/app/shared/share/share.module';
   imports: [
     HomeRoutingModule,
     CommonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatCardModule,
     ShareModule
   ]
 })
