@@ -1,20 +1,10 @@
 import { MatIconModule } from '@angular/material/icon';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatTableModule } from '@angular/material/table';
-import { MatSortModule } from '@angular/material/sort';
-import { MatCardModule } from '@angular/material/card';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { HomeComponent } from './features/home/home.component';
-// import { LayoutComponent } from './features/layout/layout.component';
-// import { ManageassetComponent } from './features/manageasset/manageasset.component';
-// import { ManageuserComponent } from './features/manageuser/manageuser.component';
-// import { WelcomeComponent } from './features/welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule, OidcConfigService } from 'angular-auth-oidc-client';
-//import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeModule } from './features/home/home.module';
 import { LayoutModule } from './features/layout/layout.module';
@@ -24,12 +14,11 @@ import { AuthInterceptorService } from './core/services/auth-interceptor.service
 import { WelcomeModule } from './features/welcome/welcome.module';
 import { ModalDetailInfoComponent } from './shared/modal-detail-info/modal-detail-info.component';
 import { MatDialogModule } from '@angular/material/dialog';
-//import { CheckbtnComponent } from './shared/button/checkbtn/checkbtn.component';
-//import { CancelbtnComponent } from './shared/button/cancelbtn/cancelbtn.component';
 import { ModalbtnComponent } from './shared/button/modalbtn/modalbtn.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ManageAssignmentModule } from './features/manage-assignment/manage-assignment.module';
 import { ManageuserModule } from './features/manageuser/manageuser.module';
+import { ManageReportModule } from './features/manage-report/manage-report.module';
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
   return () =>
@@ -62,6 +51,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     ManageuserModule,
     ManageAssignmentModule,
     WelcomeModule,
+    ManageReportModule,
     AppRoutingModule,
     BrowserModule,
     AppRoutingModule,

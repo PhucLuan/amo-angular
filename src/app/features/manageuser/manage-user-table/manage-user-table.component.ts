@@ -12,7 +12,7 @@ import { UserService } from 'src/app/core/services/manageuser/user.service';
   styleUrls: ['./manage-user-table.component.css']
 })
 export class ManageUserTableComponent implements AfterViewInit {
-  displayedColumns: string[] = ['StaffCode', 'FullName' , 'UserName','JoinedDate', 'Type'];
+  displayedColumns: string[] = ['StaffCode', 'FullName' , 'UserName','JoinedDate', 'Type','action'];
 
   data: any;
 
@@ -78,5 +78,9 @@ export class ManageUserTableComponent implements AfterViewInit {
           return data.items;
         })
       ).subscribe(data => this.data = data);
+  }
+  
+  OnClickEditUser(userId : any){
+    this.router.navigate([`user/EditUser/${userId}`])
   }
 }

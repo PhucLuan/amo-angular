@@ -29,27 +29,13 @@ export function joinedDateWeekendValidator(control: AbstractControl) {
   return (day === 0 || day === 6) ? { invalidWeekendJoinedDate: true } : null;
 }
 export const joinedDateAfterDoBValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-  const dateOfBirthControl = control.get('dateOfBirth');
-  const joinedDateControl = control.get('joinedDate');
+  const dateOfBirthControl = control.get('DateOfBirth');
+  const joinedDateControl = control.get('JoinedDate');
   const dateOfBirth = new Date(dateOfBirthControl?.value).setHours(0, 0, 0, 0);
   const joinedDate = new Date(joinedDateControl?.value).setHours(0, 0, 0, 0);
 
   return !(joinedDate > dateOfBirth) ? { invalidJoinedDateAfterDoB: true } : null;
 };
-// export function joinedDateAfterDoBValidator(control: AbstractControl) {
-
-//   const _dateOfBirth = control.get('dateOfBirth');
-//   const _joinedDate = control.get('joinedDate');
-//   //console.log(_dateOfBirth)
-//   if (_dateOfBirth == null|| !_joinedDate) {
-//     return null;
-//   }
-
-//   const dateOfBirth = new Date(_dateOfBirth.value).setHours(0, 0, 0, 0);
-//   const joinedDate = new Date(_joinedDate.value).setHours(0, 0, 0, 0);
-//   console.log(dateOfBirth-joinedDate)
-//   return !(joinedDate > dateOfBirth) ? { invalidJoinedDateAfterDoB: true } : null;
-// }
 
 @Component({
   selector: 'app-manageuser-form',
@@ -62,12 +48,14 @@ export class ManageuserFormComponent implements OnInit {
   public defaultdate = new Date();
   public userForm: FormGroup = this.formBuilder.group(
     {
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      dateOfBirth: ['', [Validators.required, dateOfBirthValidator]],
-      gender: ['', Validators.required],
-      joinedDate: ['', [Validators.required, joinedDateWeekendValidator]],
-      type: ['', Validators.required],
+      FirstName: ['', Validators.required],
+      LastName: ['', Validators.required],
+      DateOfBirth: ['', [Validators.required, dateOfBirthValidator]],
+      Gender: ['', Validators.required],
+      JoinedDate: ['', [Validators.required, joinedDateWeekendValidator]],
+      Type: ['', Validators.required],
+      Email: ['', Validators.required],
+      UserName: ['', Validators.required],
     },
     {
       validators: joinedDateAfterDoBValidator
@@ -84,15 +72,36 @@ export class ManageuserFormComponent implements OnInit {
     { id: 'Staff', name: 'Staff' }
   ];
 
+  private userId : string = "";
+  private isAddMode: boolean = true;
+
   constructor(private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.GetAsset()
   }
-
+  GetAsset(): void {
+    this.userId = this.route.snapshot.paramMap.get('id') ?? "";
+    if (!(this.userId == null || this.userId == undefined || this.userId == "")) {
+      this.isAddMode = false;
+      this.userForm.get('FirstName')?.disable({ onlySelf: true });
+      this.userForm.get('LastName')?.disable({ onlySelf: true });
+      this.userForm.get('UserName')?.disable({ onlySelf: true });
+      this.userForm.get('Email')?.disable({ onlySelf: true });
+      this.InitialValue(this.userId);
+    }
+  }
   onSubmit() {
     console.log(this.userForm.value)
+    if (this.isAddMode){
+      this.userService.CreateUser(this.userForm.value).subscribe(x => console.log(x));
+    }
+    else
+    this.userService.UpdateUser(this.userId,this.userForm.getRawValue()).subscribe(x => console.log(x));
+    
+    this.router.navigate(['/user'])
   }
 
   OnCancelClick() {
@@ -102,4 +111,30 @@ export class ManageuserFormComponent implements OnInit {
   FormatDate(date: any) {
     return date.split("/").reverse().join("-");
   }
+  InitialValue(userId: string): void {
+
+    this.userService.GetUserById(userId)
+      .subscribe(
+        x => {
+          this.userForm.patchValue({
+            FirstName: x.firstName,
+            LastName: x.lastName,
+            DateOfBirth: this.FormatDate(x.dateOfBirth),
+            Gender: x.gender,
+            JoinedDate: this.FormatDate(x.joinedDate),
+            Type: x.type,
+            Email: x.email,
+            UserName: x.userName,
+          })
+        }
+      )
+  }
+  // FirstName: ['', Validators.required],
+  //     LastName: ['', Validators.required],
+  //     DateOfBirth: ['', [Validators.required, dateOfBirthValidator]],
+  //     Gender: ['', Validators.required],
+  //     JoinedDate: ['', [Validators.required, joinedDateWeekendValidator]],
+  //     Type: ['', Validators.required],
+  //     Email: ['', Validators.required],
+  //     UserName: ['', Validators.required],
 }

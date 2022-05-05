@@ -2,37 +2,59 @@
     <mat-card class="card">
         <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="example-form">
 
-            <label for="firstName">First Name: </label>
-            <input id="firstName" type="text" formControlName="firstName">
-            <div *ngIf="userForm.get('firstName')?.invalid && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)"
+            <label for="FirstName">First Name: </label>
+            <input id="FirstName" type="text" formControlName="FirstName">
+            <div *ngIf="userForm.get('FirstName')?.invalid && (userForm.get('FirstName')?.dirty || userForm.get('FirstName')?.touched)"
                 class="alert alert-danger">
 
-                <div *ngIf="userForm.get('firstName')?.errors?.['required']">
+                <div *ngIf="userForm.get('FirstName')?.errors?.['required']">
                     First Name is required.
                 </div>
             </div>
             <br />
 
-            <label for="lastName">Last Name: </label>
-            <input id="lastName" type="text" formControlName="lastName">
-            <div *ngIf="userForm.get('lastName')?.invalid && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)"
+            <label for="LastName">Last Name: </label>
+            <input id="LastName" type="text" formControlName="LastName">
+            <div *ngIf="userForm.get('LastName')?.invalid && (userForm.get('LastName')?.dirty || userForm.get('LastName')?.touched)"
                 class="alert alert-danger">
 
-                <div *ngIf="userForm.get('lastName')?.errors?.['required']">
+                <div *ngIf="userForm.get('LastName')?.errors?.['required']">
                     Last Name is required.
                 </div>
             </div>
             <br />
 
-            <label for="dateOfBirth">Date of birth: </label>
-            <input id="dateOfBirth" type="date" formControlName="dateOfBirth">
-            <div *ngIf="userForm.get('dateOfBirth')?.invalid && (userForm.get('dateOfBirth')?.dirty || userForm.get('dateOfBirth')?.touched)"
+            <label for="Email">Email: </label>
+            <input id="Email" type="text" formControlName="Email">
+            <div *ngIf="userForm.get('Email')?.invalid && (userForm.get('Email')?.dirty || userForm.get('Email')?.touched)"
                 class="alert alert-danger">
 
-                <div *ngIf="userForm.get('dateOfBirth')?.errors?.['required']">
+                <div *ngIf="userForm.get('Email')?.errors?.['required']">
+                    Email is required.
+                </div>
+            </div>
+            <br />
+
+            <label for="UserName">User Name: </label>
+            <input id="UserName" type="text" formControlName="UserName">
+            <div *ngIf="userForm.get('UserName')?.invalid && (userForm.get('UserName')?.dirty || userForm.get('UserName')?.touched)"
+                class="alert alert-danger">
+
+                <div *ngIf="userForm.get('UserName')?.errors?.['required']">
+                    UserName is required.
+                </div>
+            </div>
+            <br />
+
+            <label for="DateOfBirth">Date of birth: </label>
+            <input id="DateOfBirth" type="date" formControlName="DateOfBirth">
+            <div *ngIf="userForm.get('DateOfBirth')?.invalid && (userForm.get('DateOfBirth')?.dirty || userForm.get('DateOfBirth')?.touched)"
+                class="alert alert-danger">
+
+                <div *ngIf="userForm.get('DateOfBirth')?.errors?.['required']">
                     Date of birth is required.
                 </div>
-                <div *ngIf="userForm.get('dateOfBirth')?.errors?.['invalidDateOfBirth']">
+                <div *ngIf="userForm.get('DateOfBirth')?.errors?.['invalidDateOfBirth']">
                     User is under 18. Please select a different date.
                 </div>
             </div>
@@ -40,49 +62,49 @@
 
             <label id="example-radio-group-label">Gender</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="gender-radio-group"
-                formControlName="gender">
+                formControlName="Gender">
                 <mat-radio-button class="gender-radio-button" *ngFor="let gender of genders" [value]="gender.id">
                     {{gender.name}}
                 </mat-radio-button>
             </mat-radio-group>
-            <div *ngIf="userForm.get('gender')?.invalid" class="alert alert-danger">
+            <div *ngIf="userForm.get('Gender')?.invalid" class="alert alert-danger">
 
-                <div *ngIf="userForm.get('gender')?.errors?.['required']">
+                <div *ngIf="userForm.get('Gender')?.errors?.['required']">
                     Gender is required.
                 </div>
             </div>
             <br />
 
             <label for="joinedDate">Joined Date: </label>
-            <input id="joinedDate" type="date" formControlName="joinedDate">
-            <div *ngIf="userForm.get('joinedDate')?.invalid && (userForm.get('joinedDate')?.dirty || userForm.get('joinedDate')?.touched)"
+            <input id="JoinedDate" type="date" formControlName="JoinedDate">
+            <div *ngIf="userForm.get('JoinedDate')?.invalid && (userForm.get('JoinedDate')?.dirty || userForm.get('JoinedDate')?.touched)"
                 class="alert alert-danger">
 
-                <div *ngIf="userForm.get('joinedDate')?.errors?.['required']">
+                <div *ngIf="userForm.get('JoinedDate')?.errors?.['required']">
                     Joined Date is required.
                 </div>
-                <div *ngIf="userForm.get('joinedDate')?.errors?.['invalidWeekendJoinedDate']">
+                <div *ngIf="userForm.get('JoinedDate')?.errors?.['invalidWeekendJoinedDate']">
                     Joined date is Saturday or Sunday. Please select a different date.
                 </div>
 
             </div>
-            <div *ngIf="userForm.errors?.['invalidJoinedDateAfterDoB']&&userForm.get('joinedDate')?.touched" class="alert alert-danger">
+            <div *ngIf="userForm.errors?.['invalidJoinedDateAfterDoB']&&userForm.get('JoinedDate')?.touched" class="alert alert-danger">
                 <div>
                     Joined date is not later than Date of Birth. Please select a different date.
                 </div>
             </div>
             <br />
 
-            <label for="type">Type: </label>
-            <select class="custom-select mb-3" formControlName="type">
+            <label for="Type">Type: </label>
+            <select class="custom-select mb-3" formControlName="Type">
                 <option *ngFor="let type of typeList" [ngValue]="type.id">
                     {{ type.name }}
                 </option>
             </select>
-            <div *ngIf="userForm.get('type')?.invalid && (userForm.get('type')?.dirty || userForm.get('type')?.touched)"
+            <div *ngIf="userForm.get('Type')?.invalid && (userForm.get('Type')?.dirty || userForm.get('Type')?.touched)"
                 class="alert alert-danger">
 
-                <div *ngIf="userForm.get('type')?.errors?.['required']">
+                <div *ngIf="userForm.get('Type')?.errors?.['required']">
                     Type is required.
                 </div>
             </div>
