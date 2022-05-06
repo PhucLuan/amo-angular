@@ -16,7 +16,6 @@ export class ManageAssignmentFilterComponent implements OnInit {
 
   constructor(private assignmentService: AssignmentService, private router: Router) { }
 
-  //public categoryList: any
   public stateList: any
   public stateSlectedString! : string
   public searchKey$ = new BehaviorSubject<any>('');

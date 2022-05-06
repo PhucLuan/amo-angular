@@ -28,7 +28,7 @@ export class StatePipe implements PipeTransform {
       case 7:
         return 'Completed';
       case 8:
-        return 'WaitingForReturning';
+        return 'Waiting For Returning';
     }
     //return null;
   }

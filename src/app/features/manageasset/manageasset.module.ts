@@ -4,16 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ManageassetRoutingModule } from './manageasset-routing.module';
 import { AssetTableComponent } from './asset-table/asset-table.component';
 import { ManageassetComponent } from './manageasset.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableModule } from '@angular/material/table';
-import { MatSortModule } from '@angular/material/sort';
-import { MatCardModule } from '@angular/material/card';
 import { AssetFilterComponent } from './asset-filter/asset-filter.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AssetModalComponent } from './asset-modal/asset-modal.component';
 import { AssetDeleteModalComponent } from './asset-delete-modal/asset-delete-modal.component';
-import { MatButtonModule } from '@angular/material/button';
 import { AssetFormComponent } from './asset-form/asset-form.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { ShareModule } from 'src/app/shared/share/share.module';
@@ -33,7 +28,6 @@ import { ShareModule } from 'src/app/shared/share/share.module';
     ReactiveFormsModule,
     ManageassetRoutingModule,
     MatSelectModule,
-    MatButtonModule,
     MatRadioModule,
     ShareModule
   ]

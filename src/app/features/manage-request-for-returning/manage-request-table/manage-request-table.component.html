@@ -1,1 +1,93 @@
-<p>manage-request-table works!</p>
+<mat-card-title>Assignment List</mat-card-title>
+
+<mat-card class="example-card">
+    <mat-card-content>
+        <div class="example-container mat-elevation-z8">
+            <div class="example-table-container">
+                <table mat-table [dataSource]="data" class="myrequest-table" matSort matSortActive="created"
+                    matSortDisableClear matSortDirection="desc">
+                    <ng-container matColumnDef="number">
+                        <th mat-header-cell *matHeaderCellDef>No.</th>
+                        <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+                    </ng-container>
+                    <!-- Assignment code Column -->
+                    <ng-container matColumnDef="assetCode">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Asset Code</th>
+                        <td mat-cell *matCellDef="let row">{{row.assetCode}}</td>
+                    </ng-container>
+
+                    <!-- Assignment Name Column -->
+                    <ng-container matColumnDef="assetName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Asset Name</th>
+                        <td mat-cell *matCellDef="let row">{{row.assetName}}</td>
+                    </ng-container>
+
+                    <!-- Category Column -->
+                    <ng-container matColumnDef="requestedBy">
+                        <th mat-header-cell *matHeaderCellDef>Request By</th>
+                        <td mat-cell *matCellDef="let row">{{row.requestedBy}}</td>
+                    </ng-container>
+
+                    <!-- State Column -->
+                    <ng-container matColumnDef="assignedDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            Assigned Date
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{row.assignedDate}}</td>
+                    </ng-container>
+                    <!-- AssignedDate Column -->
+                    <ng-container matColumnDef="acceptedBy">
+                        <th mat-header-cell *matHeaderCellDef>
+                            Accepted By
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{row.acceptedBy}}</td>
+                    </ng-container>
+                     <!-- AssignedDate Column -->
+                     <ng-container matColumnDef="returnDate" >
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            Returned Date
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{row.returnDate}}</td>
+                    </ng-container>
+                    <!-- AssignedDate Column -->
+                    <ng-container matColumnDef="state">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            State
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{row.state|statePipe}}</td>
+                    </ng-container>
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                            <div class="grbtn-action">
+                                <app-checkbtn 
+                                [isDisable]="TransFormState(row.state) !== 'Waiting For Returning'" [title]="'Are you sure?'"
+                                [message]="'Do you want to mark this returning request as Completed?'"
+                                [confirmBtn] = "'Yes'"
+                                [cancelBtn] = "'No'"
+                                
+                               
+                                ></app-checkbtn>
+                                <app-cancelbtn 
+                                [isDisable]="TransFormState(row.state) !== 'Waiting For Returning'" [title]="'Are you sure?'"
+                                [message]="'Do you want to cancel this returning request?'"  
+                                [confirmBtn] = "'Yes'"
+                                [cancelBtn] = "'No'"
+                                
+                                
+                                ></app-cancelbtn>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row 
+                        *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+            <mat-paginator [length]="resultsLength" [pageSize]="5" aria-label="Select page of GitHub search results">
+            </mat-paginator>
+        </div>
+    </mat-card-content>
+</mat-card>

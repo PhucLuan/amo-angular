@@ -6,25 +6,32 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { CheckbtnComponent } from '../button/checkbtn/checkbtn.component';
+import { CancelbtnComponent } from '../button/cancelbtn/cancelbtn.component';
 
 
 
 @NgModule({
-  declarations: [StatePipe,ArrowcirclebtnComponent],
+  declarations: [StatePipe,ArrowcirclebtnComponent,CheckbtnComponent,CancelbtnComponent],
   imports: [
     CommonModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   exports: [
     StatePipe,
     ArrowcirclebtnComponent,
+    CheckbtnComponent,
+    CancelbtnComponent,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class ShareModule { }

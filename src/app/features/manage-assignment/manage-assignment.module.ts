@@ -11,7 +11,6 @@ import { AssignmentFormComponent } from './assignment-form/assignment-form.compo
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatButtonModule } from '@angular/material/button';
 import { AssetPopupComponent } from './asset-popup/asset-popup.component';
 import { UserPopupComponent } from './user-popup/user-popup.component';
 
@@ -32,7 +31,6 @@ import { UserPopupComponent } from './user-popup/user-popup.component';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatButtonModule,
     MatRadioModule,
     ShareModule
   ]
