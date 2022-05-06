@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ManageAssignmentModule } from './features/manage-assignment/manage-assignment.module';
 import { ManageuserModule } from './features/manageuser/manageuser.module';
 import { ManageReportModule } from './features/manage-report/manage-report.module';
+import { ManageRequestForReturningModule } from './features/manage-request-for-returning/manage-request-for-returning.module';
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
   return () =>
@@ -50,6 +51,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     ManageassetModule,
     ManageuserModule,
     ManageAssignmentModule,
+    ManageRequestForReturningModule,
     WelcomeModule,
     ManageReportModule,
     AppRoutingModule,

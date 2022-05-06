@@ -90,6 +90,7 @@ export class ManageuserFormComponent implements OnInit {
       this.userForm.get('LastName')?.disable({ onlySelf: true });
       this.userForm.get('UserName')?.disable({ onlySelf: true });
       this.userForm.get('Email')?.disable({ onlySelf: true });
+      this.userForm.get('Type')?.disable({ onlySelf: true });
       this.InitialValue(this.userId);
     }
   }
@@ -129,12 +130,4 @@ export class ManageuserFormComponent implements OnInit {
         }
       )
   }
-  // FirstName: ['', Validators.required],
-  //     LastName: ['', Validators.required],
-  //     DateOfBirth: ['', [Validators.required, dateOfBirthValidator]],
-  //     Gender: ['', Validators.required],
-  //     JoinedDate: ['', [Validators.required, joinedDateWeekendValidator]],
-  //     Type: ['', Validators.required],
-  //     Email: ['', Validators.required],
-  //     UserName: ['', Validators.required],
 }

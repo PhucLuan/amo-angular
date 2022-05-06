@@ -11,6 +11,12 @@
 .mat-row:hover .mat-cell {
     border-color: currentColor;
 }
+
+.grbtn-action{
+    display: flex;
+    justify-content: space-around;
+}
+
 .edit_icon_inb {
     overflow: visible;
     /* position: absolute; */
@@ -23,4 +29,24 @@
 
 #edit_icon_inb {
     fill: rgba(112, 112, 112, 1);
+}
+
+.x-circle-fill_ina {
+    overflow: visible;
+    /* position: absolute; */
+    width: 17px;
+    height: 17px;
+    /* left: 0px;
+    top: 0px; */
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+#x-circle-fill_ina {
+    fill: rgba(239, 241, 245, 1);
+    stroke: rgba(207, 35, 56, 1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
 }

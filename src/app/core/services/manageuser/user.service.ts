@@ -28,13 +28,23 @@ export class UserService {
       `https://localhost:5001/api/User/${userId}`
     );
   }
-//   put: (id, user) => {
-//     const url = `api/User/${id}`;
-//     return axiosClient.put(url,user)
-// },
 UpdateUser(id : any,user: any): Observable<any> {
   return this.httpClient.put<any>(
     `https://localhost:5001/api/User/${id}`, user
+  );
+}
+// delete: (id) => {
+//   const url = `api/User/${id}`;
+//   return axiosClient.delete(url)
+// }
+CheckCanNotDisableUser(userId : any): Observable<any>{
+  return this.httpClient.get<any>(
+    `https://localhost:5011/api/Assignment/CheckRelation/${userId}`
+  );
+}
+DeleteUser(userId: any): Observable<any> {
+  return this.httpClient.delete<any>(
+    `https://localhost:5001/api/User/${userId}`
   );
 }
 }

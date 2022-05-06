@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManageuserFormComponent } from './manageuser-form/manageuser-form.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { UserDeleteModalComponent } from './user-delete-modal/user-delete-modal.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MatRadioModule } from '@angular/material/radio';
     ManageuserComponent,
     ManageUserTableFilterComponent,
     ManageUserTableComponent,
-    ManageuserFormComponent
+    ManageuserFormComponent,
+    UserDeleteModalComponent
   ],
   imports: [
     CommonModule,

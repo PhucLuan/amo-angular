@@ -1,0 +1,23 @@
+<p>user-delete-modal works!</p>
+<section>
+    <h1 mat-dialog-title>{{ data.title }}</h1>
+    <div *ngIf="!data.isExited">
+        <div mat-dialog-content>
+            <!-- Want to display html elements from app-modal -->
+            {{ data.message }}
+        </div>
+        <div mat-dialog-actions>
+            <button mat-raised-button color="warn" (click)="onClickYes()">{{data.confirmBtn}}</button>
+            <button mat-raised-button (click)="onNoClick()">{{data.cancelBtn}}</button>
+        </div>
+    </div>
+    <div *ngIf="data.isExited">
+        <button mat-raised-button (click)="onNoClick()">Close</button>
+        <div mat-dialog-content>
+            <div>
+                <p>There are valid assignments belonging to this user</p>
+                <p>Please close all assignments before disabling user</p>
+            </div>
+        </div>
+    </div>
+</section>
