@@ -6,7 +6,6 @@ import { ManageAssignmentComponent } from './manage-assignment.component';
 import { ManageAssignmentTableComponent } from './manage-assignment-table/manage-assignment-table.component';
 import { ManageAssignmentFilterComponent } from './manage-assignment-filter/manage-assignment-filter.component';
 import { ShareModule } from 'src/app/shared/share/share.module';
-import { XcirclebtnComponent } from 'src/app/shared/button/xcirclebtn/xcirclebtn.component';
 import { AssignmentFormComponent } from './assignment-form/assignment-form.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,7 +19,6 @@ import { UserPopupComponent } from './user-popup/user-popup.component';
     ManageAssignmentComponent, 
     ManageAssignmentTableComponent, 
     ManageAssignmentFilterComponent,
-    XcirclebtnComponent,
     AssignmentFormComponent,
     AssetPopupComponent,
     UserPopupComponent

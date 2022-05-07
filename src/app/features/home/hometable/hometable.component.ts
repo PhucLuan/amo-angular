@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { BehaviorSubject, catchError, EMPTY } from 'rxjs';
 import { AssignmentItem } from 'src/app/core/models/assignment-item';
 import { HomeService } from 'src/app/core/services/homeservice/home.service';
@@ -40,6 +41,7 @@ export class HometableComponent implements AfterViewInit {
     'action'
   ];
   data: AssignmentItem[] = [];
+  dataSource = new MatTableDataSource<any>();
 
   isOpenModalDetail: boolean = true;
 
@@ -102,7 +104,7 @@ export class HometableComponent implements AfterViewInit {
       this.RequestForReturning({ Id: this.currentId, UserId: localStorage.getItem('userId') ?? '' });
       this.arrowcirclecomponent.closeDialog();
     }
-    this.LoadData();
+    //this.LoadData();
     console.log("Emit event click yes " + res + " " + this.currentId)
   }
 
@@ -113,8 +115,9 @@ export class HometableComponent implements AfterViewInit {
     this.UpdateAssignmentId(assignmentId)
   }
 
-  LoadData(): void {
-    this.homeService!.GetDataByUserId(localStorage.getItem('userId') ?? "")
+  LoadData() {
+    console.log("LoadData")
+    this.homeService.GetDataByUserId(localStorage.getItem('userId') ?? "")
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.error instanceof Error) {
@@ -124,7 +127,11 @@ export class HometableComponent implements AfterViewInit {
           }
           return EMPTY;
         }))
-      .subscribe((data: any) => (this.data = data));
+      .subscribe((data) => {
+        console.log(data)
+        this.dataSource.data = data;
+
+      });
   }
 
   AcceptAssignment(assignmentId: string): void {
@@ -137,7 +144,9 @@ export class HometableComponent implements AfterViewInit {
             console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
           }
           return EMPTY;
-        })).subscribe(data => console.log(data));
+        })).subscribe(data => {console.log(data)
+          this.LoadData();
+        });
   }
 
   DeclineAssignment(assignmentId: string): void {
@@ -150,7 +159,9 @@ export class HometableComponent implements AfterViewInit {
             console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
           }
           return EMPTY;
-        })).subscribe(data => console.log(data));
+        })).subscribe(data => {console.log(data)
+          this.LoadData();
+        });
   }
 
   RequestForReturning(assignment: any): void {
@@ -163,7 +174,11 @@ export class HometableComponent implements AfterViewInit {
             console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
           }
           return EMPTY;
-        })).subscribe(data => console.log(data));
+        })).subscribe(data => 
+          {
+            console.log(data)
+            this.LoadData();
+          });
   }
   UpdateAssignmentId(assignmentId: string) {
     this.currentId = assignmentId;

@@ -21,8 +21,8 @@ export class HomeService {
   //     }`
   //   );
   // }
-  GetDataByUserId(userid: string): Observable<AssignmentItem[]> {
-    return this.httpClient.get<AssignmentItem[]>(
+  GetDataByUserId(userid: string): Observable<any> {
+    return this.httpClient.get<any>(
       `https://localhost:5011/api/Assignment/user/${userid}`
     );
   }

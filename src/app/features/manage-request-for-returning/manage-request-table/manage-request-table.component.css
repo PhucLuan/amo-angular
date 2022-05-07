@@ -11,3 +11,8 @@
 .mat-row:hover .mat-cell {
     border-color: currentColor;
 }
+
+.grbtn-action{
+    display: flex;
+    justify-content: space-between;
+}

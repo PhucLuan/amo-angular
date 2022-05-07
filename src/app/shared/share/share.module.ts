@@ -9,11 +9,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { CheckbtnComponent } from '../button/checkbtn/checkbtn.component';
 import { CancelbtnComponent } from '../button/cancelbtn/cancelbtn.component';
+import { XcirclebtnComponent } from '../button/xcirclebtn/xcirclebtn.component';
 
 
 
 @NgModule({
-  declarations: [StatePipe,ArrowcirclebtnComponent,CheckbtnComponent,CancelbtnComponent],
+  declarations: [StatePipe,ArrowcirclebtnComponent,CheckbtnComponent,CancelbtnComponent,XcirclebtnComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -27,6 +28,7 @@ import { CancelbtnComponent } from '../button/cancelbtn/cancelbtn.component';
     ArrowcirclebtnComponent,
     CheckbtnComponent,
     CancelbtnComponent,
+    XcirclebtnComponent,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,

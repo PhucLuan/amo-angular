@@ -13,13 +13,25 @@ export class RequestReturningService {
   
   constructor(private httpClient: HttpClient) { }
 
-  // find: (params) => {
-  //   const url = 'api/Request/find';
-  //   return amoClient.post(url, params)
+  // delete: (id) => {
+  //   const url = `api/Request/${id}`;
+  //   return amoClient.delete(url)
   // },
   GetRequestReturning(filter: any): Observable<any> {
     return this.httpClient.post<any>(
       `https://localhost:5011/api/Request/find`, filter
+    );
+  }
+
+  AcceptRequestReturning(requestId: any): Observable<any> {
+    return this.httpClient.put<any>(
+      `https://localhost:5011/api/Request/accept/${requestId}`,''
+    );
+  }
+
+  CancelRequestReturning(requestId: any): Observable<any> {
+    return this.httpClient.delete<any>(
+      `https://localhost:5011/api/Request/${requestId}`
     );
   }
 }

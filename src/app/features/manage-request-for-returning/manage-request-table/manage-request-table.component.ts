@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { catchError, debounceTime, distinctUntilChanged, map, merge, of, startWith, switchMap } from 'rxjs';
 import { StatePipe } from 'src/app/core/pipe/state.pipe';
 import { RequestReturningService } from 'src/app/core/services/requestreturning/request-returning.service';
+import { CancelbtnComponent } from 'src/app/shared/button/cancelbtn/cancelbtn.component';
+import { CheckbtnComponent } from 'src/app/shared/button/checkbtn/checkbtn.component';
+import { XcirclebtnComponent } from 'src/app/shared/button/xcirclebtn/xcirclebtn.component';
 
 @Component({
   selector: 'app-manage-request-table',
@@ -33,6 +36,10 @@ export class ManageRequestTableComponent implements OnInit {
   dateFilter = "";
   searchFilter = "";
 
+  private currentId: string = '';
+
+  @ViewChild(CheckbtnComponent) private checkcomponent!: CheckbtnComponent;
+  @ViewChild(CancelbtnComponent) private cancelcomponent!: CancelbtnComponent;
   constructor(
     private requestReturningService: RequestReturningService,
     public dialog: MatDialog,
@@ -97,6 +104,30 @@ export class ManageRequestTableComponent implements OnInit {
           return data.items;
         })
       ).subscribe(data => this.data = data);
+  }
+//-----event binding from template
+onBtnInRowClicked(requestId: string) {
+  //Update id object
+  this.UpdateRequestId(requestId)
+}
+  onClickYes(res: string) {
+    if (res === "CancelBtnIsClicked") {
+      //this.DisableAssignment(this.currentId);
+      this.requestReturningService.CancelRequestReturning(this.currentId).subscribe(x => console.log(x))
+      //console.log("CancelBtnIsClicked",this.currentId)
+      this.cancelcomponent.closeDialog();
+    }
+    if (res === "CheckBtnIsClicked") {
+      this.requestReturningService.AcceptRequestReturning(this.currentId).subscribe(x => console.log(x));
+      console.log(this.currentId)
+      //this.RequestForReturning({ Id: this.currentId, UserId: localStorage.getItem('userId') ?? '' });
+      this.checkcomponent.closeDialog();
+    }
+    this.LoadData();
+    console.log("Emit event click yes " + res + " " + this.currentId)
+  }
+  UpdateRequestId(requestId: string) {
+    this.currentId = requestId;
   }
   TransFormState(state :string) : string{
     return this.statePipe.transform(state)

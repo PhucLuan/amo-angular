@@ -67,16 +67,16 @@
                                 [message]="'Do you want to mark this returning request as Completed?'"
                                 [confirmBtn] = "'Yes'"
                                 [cancelBtn] = "'No'"
-                                
-                               
+                                (click)="onBtnInRowClicked(row.id)"
+                                (checkbtnClickYes)="onClickYes($event)"
                                 ></app-checkbtn>
                                 <app-cancelbtn 
                                 [isDisable]="TransFormState(row.state) !== 'Waiting For Returning'" [title]="'Are you sure?'"
                                 [message]="'Do you want to cancel this returning request?'"  
                                 [confirmBtn] = "'Yes'"
                                 [cancelBtn] = "'No'"
-                                
-                                
+                                (click)="onBtnInRowClicked(row.id)"
+                                (cancelbtnClickYes)="onClickYes($event)"
                                 ></app-cancelbtn>
                             </div>
                         </td>
