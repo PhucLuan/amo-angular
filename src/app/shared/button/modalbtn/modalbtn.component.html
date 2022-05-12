@@ -1,11 +1,15 @@
 <section>
-    <h1 mat-dialog-title>{{ data.title }}</h1>
-    <div mat-dialog-content>
-        <!-- Want to display html elements from app-modal -->
-        {{ data.message }}
+    <div class="card-header">
+        <div class="modal-title">{{ data.title }}</div>
     </div>
-    <div mat-dialog-actions>
-        <button mat-raised-button color="warn" (click)="onClickYes()">{{data.confirmBtn}}</button>
-        <button mat-raised-button (click)="onNoClick()">{{data.cancelBtn}}</button>
+    <div class="card-body">
+        <div class="card-content">
+            <!-- Want to display html elements from app-modal -->
+            {{ data.message }}
+        </div>
+        <div class="card-gr-btn">
+            <button mat-raised-button color="warn" (click)="onClickYes()">{{data.confirmBtn}}</button>
+            <button mat-raised-button (click)="onNoClick()">{{data.cancelBtn}}</button>
+        </div>
     </div>
 </section>

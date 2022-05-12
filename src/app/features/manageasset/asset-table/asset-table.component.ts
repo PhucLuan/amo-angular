@@ -118,7 +118,7 @@ export class AssetTableComponent implements AfterViewInit {
           this.historyAssignment = res;
           console.log(this.historyAssignment)
           const dialogRef = this.dialog.open(AssetModalComponent, {
-
+            panelClass: 'asset-detail-modalbox',
             data: {
               title: "Detailed Asset Information",
               keys: keyDisplayItem,
@@ -146,6 +146,7 @@ export class AssetTableComponent implements AfterViewInit {
 
           if (x == true) {
             const dialogRef = this.dialog.open(AssetDeleteModalComponent, {
+              panelClass: 'custom-modalbox',
               data: {
                 title: "Cannot Delete Asset",
                 isExited: true
@@ -158,6 +159,7 @@ export class AssetTableComponent implements AfterViewInit {
               })
           } else {
             const dialogRef = this.dialog.open(AssetDeleteModalComponent, {
+              panelClass: 'custom-modalbox',
               data: {
                 title: "Are you sure?",
                 message: "Do you want to delete this asset?",

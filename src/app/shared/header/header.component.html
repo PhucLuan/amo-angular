@@ -1,17 +1,24 @@
 <div class="app-header">
   <div class="app-header__namepage">{{ namepage }}</div>
   <div class="app-header__gr-btn">
-    <a class="app-header__gr-btn--login" (click)="login()" *ngIf="!isAuthenticated">Login</a>
+    <!-- <a class="app-header__gr-btn--login" (click)="login()" *ngIf="!isAuthenticated">Login</a> -->
     <!-- <button (click)="callApi()">Call Api</button> -->
-    <div *ngIf="isAuthenticated">
+    <div *ngIf="isAuthenticated" class="app-header__gr-btn__menu">
       <!-- <ngbd-dropdown-basic [item]="currentItem"></ngbd-dropdown-basic> -->
-      {{username}}
-      <button (click)="logout()" class="mybtn">
-        <div class="with-icon">
-          <mat-icon aria-hidden="false">login</mat-icon><div>Logout</div>
-        </div>
-       
-      </button>
+      {{username}} 
+      <div mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>refresh</mat-icon>
+          <span>Change Password</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
 </div>

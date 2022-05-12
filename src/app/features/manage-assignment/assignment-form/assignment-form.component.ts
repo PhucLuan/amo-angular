@@ -34,6 +34,7 @@ export class AssignmentFormComponent implements OnInit {
     note: ['', Validators.required],
   });
 
+  public title = "Create New Assignment";
   constructor(
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
@@ -70,6 +71,7 @@ export class AssignmentFormComponent implements OnInit {
     this.assignmentId = this.route.snapshot.paramMap.get('id') ?? "";
     if (this.assignmentId !== "") {
       this.IsAddMode = false;
+      this.title = "Edit Assignment";
       this.assignmentService.GetAssignmentById(this.assignmentId)
         .subscribe(
           x => //console.log(x)

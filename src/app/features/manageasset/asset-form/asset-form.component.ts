@@ -28,7 +28,7 @@ export class AssetFormComponent implements OnInit {
   public categoryList: any;
   public assetId: string = "";
   public isAddMode: boolean = true;
-
+  public title: string = "Create New Asset"
   constructor(private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private assetService: AssetService, private router: Router) { }
@@ -51,6 +51,7 @@ export class AssetFormComponent implements OnInit {
     this.assetId = this.route.snapshot.paramMap.get('id') ?? "";
     if (!(this.assetId == null || this.assetId == undefined || this.assetId == "")) {
       this.isAddMode = false;
+      this.title = "Edit Asset"
       this.assetForm.get('categoryId')?.disable({ onlySelf: true });
       this.InitialValue(this.assetId);
       this.states = [

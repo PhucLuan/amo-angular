@@ -19,7 +19,10 @@
     color: rgba(250, 252, 252, 1);
     text-decoration: none;
   }
-  .with-icon{
+  /* .with-icon{
     display: flex;
     align-items: center;
+  } */
+  .app-header__gr-btn__menu{
+    display: flex;
   }

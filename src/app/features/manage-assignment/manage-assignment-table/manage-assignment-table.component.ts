@@ -123,7 +123,7 @@ export class ManageAssignmentTableComponent implements AfterViewInit {
         note: datasource.note
       }
       const dialogRef = this.dialog.open(ModalDetailInfoComponent, {
-
+        panelClass: 'assignment-detail-modalbox',
         data: {
           title: "Detailed Assignment Information",
           keys: keyDisplayItem,

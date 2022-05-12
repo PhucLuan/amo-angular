@@ -75,6 +75,8 @@ export class ManageuserFormComponent implements OnInit {
   private userId : string = "";
   private isAddMode: boolean = true;
 
+  public title = "Create New User";
+
   constructor(private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private userService: UserService, private router: Router) { }
@@ -86,6 +88,7 @@ export class ManageuserFormComponent implements OnInit {
     this.userId = this.route.snapshot.paramMap.get('id') ?? "";
     if (!(this.userId == null || this.userId == undefined || this.userId == "")) {
       this.isAddMode = false;
+      this.title = "Edit User";
       this.userForm.get('FirstName')?.disable({ onlySelf: true });
       this.userForm.get('LastName')?.disable({ onlySelf: true });
       this.userForm.get('UserName')?.disable({ onlySelf: true });

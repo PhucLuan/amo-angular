@@ -1,24 +1,26 @@
 <section>
-    <h1 mat-dialog-title>{{ data.title }}</h1>
-    <div *ngIf="!data.isExited">
-        <div mat-dialog-content>
+    <div class="card-header">
+        <div class="modal-title" mat-dialog-title>{{ data.title }}</div>
+        <button *ngIf="data.isExited" mat-raised-button (click)="onNoClick()">Close</button>
+    </div>
+    <div *ngIf="!data.isExited" class="card-body">
+        <div mat-dialog-content class="card-content">
             <!-- Want to display html elements from app-modal -->
             {{ data.message }}
         </div>
-        <div mat-dialog-actions>
+        <div mat-dialog-actions class="card-gr-btn">
             <button mat-raised-button color="warn" (click)="onClickYes()">{{data.confirmBtn}}</button>
             <button mat-raised-button (click)="onNoClick()">{{data.cancelBtn}}</button>
         </div>
     </div>
-    <div *ngIf="data.isExited">
-        <button mat-raised-button (click)="onNoClick()">Close</button>
-        <div mat-dialog-content>
+    <div *ngIf="data.isExited" class="card-body">
+        <div mat-dialog-content class="card-content">
             <div>
                 <p>Cannot delete the asset because it belongs to one or</p>
                 <p>more historical assignments. If the asset is not able to</p>
                 <p>be used anymore, please update its state in</p>
             </div>
-            <div>Edit Asset page</div>
+            <a>Edit Asset page</a>
         </div>
     </div>
 </section>

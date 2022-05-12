@@ -80,7 +80,7 @@ export class HometableComponent implements AfterViewInit {
       }
       console.log(datasource)
       const dialogRef = this.dialog.open(ModalDetailInfoComponent, {
-
+        panelClass: 'assignment-detail-modalbox',
         data: {
           title: "Detailed Assignment Information",
           keys: keyDisplayItem,

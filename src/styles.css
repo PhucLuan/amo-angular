@@ -1,4 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.page-name--content {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(207, 35, 56, 1);
+    margin-bottom: 1.75rem;
+}
+
+.modal-title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(207, 35, 56, 1);
+}
+
+.custom-modalbox .mat-dialog-container {
+    padding: 0;
+    width: 30rem;
+}
+
+.asset-detail-modalbox .mat-dialog-container {
+    padding: 0;
+}
+
+.assignment-detail-modalbox .mat-dialog-container {
+    padding: 0;
+    width: 30rem;
+}
+
+.user-detail-modalbox .mat-dialog-container {
+    padding: 0;
+    width: 30rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    border-style: solid;
+    border-color: rgba(112, 112, 112, 1);
+    border-width: 2px;
+    border-radius: 4px;
+    padding: 1.25rem 2.25rem;
+    background-color: rgba(239, 241, 245, 1);
+}
+
+.card-body {
+    padding: 1.75rem 2.25rem;
+    border-style: solid;
+    border-color: rgba(112, 112, 112, 1);
+    border-width: 2px;
+    border-radius: 4px;
+}
+
+.card-content {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: rgba(33, 37, 41, 1);
+    padding-bottom: 1rem;
+}
+
+.card-gr-btn {
+    width: 10rem;
+    justify-content: space-between;
+    display: flex;
+}
+
+.app-name {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(207, 35, 56, 1);
+    margin-bottom: 3rem;
+}

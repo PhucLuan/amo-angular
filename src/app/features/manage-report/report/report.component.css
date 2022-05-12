@@ -11,3 +11,10 @@
 .mat-row:hover .mat-cell {
     border-color: currentColor;
 }
+
+.export-btn button {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 1.25rem;
+}

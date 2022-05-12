@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CheckbtnComponent } from 'src/app/shared/button/checkbtn/checkbtn.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +6,6 @@ import { CheckbtnComponent } from 'src/app/shared/button/checkbtn/checkbtn.compo
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  
-  //constructor(public checkButton: CheckbtnComponent) { }
 
   ngOnInit(): void {
   }

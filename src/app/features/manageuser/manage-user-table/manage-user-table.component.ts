@@ -102,7 +102,7 @@ export class ManageUserTableComponent implements AfterViewInit {
         location: datasource.location,
       }
       const dialogRef = this.dialog.open(ModalDetailInfoComponent, {
-
+        panelClass: 'user-detail-modalbox',
         data: {
           title: "Detailed User Information",
           keys: keyDisplayItem,
@@ -126,6 +126,7 @@ export class ManageUserTableComponent implements AfterViewInit {
 
           if (x == true) {
             const dialogRef = this.dialog.open(UserDeleteModalComponent, {
+              panelClass: 'custom-modalbox',
               data: {
                 title: "Cannot Delete User",
                 isExited: true
@@ -138,6 +139,7 @@ export class ManageUserTableComponent implements AfterViewInit {
               })
           } else {
             const dialogRef = this.dialog.open(UserDeleteModalComponent, {
+              panelClass: 'custom-modalbox',
               data: {
                 title: "Are you sure?",
                 message: "Do you want to delete this asset?",

@@ -28,6 +28,7 @@ export class ArrowcirclebtnComponent implements OnInit {
       return;
     }
     const dialogRef = this.dialog.open(ModalbtnComponent, {
+      panelClass: 'custom-modalbox',
       data: {
         title: this.title,
         message: this.message,

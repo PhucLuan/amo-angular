@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { BehaviorSubject, filter, map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,10 @@ import { OidcSecurityService } from 'angular-auth-oidc-client';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private oidcSecurityService: OidcSecurityService) {}
+  constructor(private oidcSecurityService: OidcSecurityService, private router: Router) {}
 
-  public namepage: string = "";
+  public namepath$ = new BehaviorSubject<any>('');
+  public namepage = ""
   public isAuthenticated: boolean = false;
   public token: string = "";
   public username: string = "";
@@ -35,8 +38,35 @@ export class HeaderComponent implements OnInit {
       this.username = localStorage.getItem('user')??"";
       this.isAuthenticated = localStorage.getItem('user') !== null;
     }
+  }
 
-    this.namepage = 'Home';
+  ngAfterViewInit() {
+    this.router.events
+    .pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map(() => {
+        let route: ActivatedRoute = this.router.routerState.root;
+        let routeTitle = '';
+        while (route!.firstChild) {
+          route = route.firstChild;
+        }
+        if (route.snapshot.data['title']) {
+          routeTitle = route!.snapshot.data['title'];
+        }
+        return routeTitle;
+      })
+    )
+    .subscribe((title: string) => {
+      if (title) {
+        
+        //this.titleService.setTitle(`My App - ${title}`);
+        console.log(title);
+        //this.namepage = title;
+        // this.namepath$.next("Ahihihi "+title);
+        // this.namepath$.subscribe(x => this.namepage = x) 
+        //console.log( this.namepath)
+      }
+    });
   }
 
   login() {
@@ -48,4 +78,3 @@ export class HeaderComponent implements OnInit {
     this.oidcSecurityService.logoff();
   }
 }
-

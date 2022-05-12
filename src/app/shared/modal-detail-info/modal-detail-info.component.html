@@ -1,11 +1,10 @@
 <section>
-    <div>
-        <button (click)="onNoClick()">Close</button>
-        <!-- <mat-icon (click)="onNoClick()" aria-hidden="false" aria-label="close icon">close</mat-icon> -->
+    <div class="card-header">
+        <div class="modal-title">{{ data.title }}</div>
+        <button mat-raised-button (click)="onNoClick()">Close</button>
     </div>
-    <h1 mat-dialog-title>{{ data.title }}</h1>
-    <div mat-dialog-content class="dialogDetailInfoContent">
-        <!-- Want to display html elements from app-modal -->
+    <div class="card-body">
+    <div mat-dialog-content class="dialogDetailInfoContent card-content">
         <div class="dialogDetailInfoContent_keys">
             <p *ngFor="let key of data.keys">
                 {{key}}
@@ -17,7 +16,5 @@
             </p>
         </div>
     </div>
-    <!-- <div mat-dialog-actions>
-        <button mat-button (click)="onNoClick()">{{ data.text ? data.text : 'Ok' }}</button>
-    </div> -->
+</div>
 </section>
