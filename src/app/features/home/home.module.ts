@@ -5,6 +5,9 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HometableComponent } from './hometable/hometable.component';
 import { ShareModule } from 'src/app/shared/share/share.module';
+import { ArrowcirclebtnModule } from 'src/app/shared/share/arrowcirclebtn/arrowcirclebtn.module';
+import { CancelbtnModule } from 'src/app/shared/share/cancelbtn/cancelbtn.module';
+import { CheckbtnModule } from 'src/app/shared/share/checkbtn/checkbtn.module';
 
 
 @NgModule({
@@ -12,7 +15,10 @@ import { ShareModule } from 'src/app/shared/share/share.module';
   imports: [
     HomeRoutingModule,
     CommonModule,
-    ShareModule
+    ShareModule,
+    ArrowcirclebtnModule,
+    CancelbtnModule,
+    CheckbtnModule
   ]
 })
 export class HomeModule { }

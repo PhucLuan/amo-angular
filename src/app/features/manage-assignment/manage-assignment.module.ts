@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { AssetPopupComponent } from './asset-popup/asset-popup.component';
 import { UserPopupComponent } from './user-popup/user-popup.component';
+import { XcirclebtnModule } from 'src/app/shared/share/xcirclebtn/xcirclebtn.module';
+import { ArrowcirclebtnModule } from 'src/app/shared/share/arrowcirclebtn/arrowcirclebtn.module';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { UserPopupComponent } from './user-popup/user-popup.component';
     ReactiveFormsModule,
     MatSelectModule,
     MatRadioModule,
+    XcirclebtnModule,
+    ArrowcirclebtnModule,
     ShareModule
   ]
 })

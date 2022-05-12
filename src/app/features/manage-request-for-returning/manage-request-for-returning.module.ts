@@ -8,6 +8,8 @@ import { ShareModule } from 'src/app/shared/share/share.module';
 import { ManageRequestFilterComponent } from './manage-request-filter/manage-request-filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { CheckbtnModule } from 'src/app/shared/share/checkbtn/checkbtn.module';
+import { CancelbtnModule } from 'src/app/shared/share/cancelbtn/cancelbtn.module';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
+    CheckbtnModule,
+    CancelbtnModule,
     ShareModule
   ]
 })
