@@ -14,12 +14,12 @@ const routes: Routes = [
     {
       path: 'assignment/CreateAssignment',
       component: AssignmentFormComponent,
-      data: { title: 'Assignment' },
+      data: { title: 'Assignment > Create New Assignment' },
     },
     {
       path: 'assignment/EditAssignment/:id',
       component: AssignmentFormComponent,
-      data: { title: 'Assignment' },
+      data: { title: 'Assignment > Edit Assignment' },
     },
   ]),
 ];

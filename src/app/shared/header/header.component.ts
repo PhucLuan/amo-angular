@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
-import { BehaviorSubject, filter, map, Observable } from 'rxjs';
+import { filter, map } from 'rxjs';
+import { HeaderService } from 'src/app/core/services/headerservice/header.service';
 
 @Component({
   selector: 'app-header',
@@ -9,16 +10,19 @@ import { BehaviorSubject, filter, map, Observable } from 'rxjs';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private oidcSecurityService: OidcSecurityService, private router: Router) {}
+  constructor(
+    private oidcSecurityService: OidcSecurityService,
+    private router: Router,
+    private headerService: HeaderService) { }
 
-  public namepath$ = new BehaviorSubject<any>('');
   public namepage = ""
   public isAuthenticated: boolean = false;
   public token: string = "";
   public username: string = "";
   public currentItem: string = "";
   ngOnInit() {
-    //this.currentItem = 'Ahihi';
+    this.namepage = this.headerService.GetTitle(this.router.url);
+    console.log(this.router.url)
     if (localStorage.getItem('user') === null) {
 
       this.oidcSecurityService
@@ -26,47 +30,51 @@ export class HeaderComponent implements OnInit {
         .subscribe((auth) => (this.isAuthenticated = auth));
 
       this.oidcSecurityService.userData$.subscribe((data) => {
-        console.log(data)
         if (data !== null) {
           this.username = data.name;
           localStorage.setItem('user', data.name);
           localStorage.setItem('userId', data.sub);
+          localStorage.setItem('currentpath', 'Home');
         }
       });
     } else {
-      this.currentItem = localStorage.getItem('user')??"";
-      this.username = localStorage.getItem('user')??"";
+      this.currentItem = localStorage.getItem('user') ?? "";
+      this.username = localStorage.getItem('user') ?? "";
       this.isAuthenticated = localStorage.getItem('user') !== null;
     }
   }
 
   ngAfterViewInit() {
+    this.SetTitile();
+  }
+  
+  SetTitile() {
     this.router.events
-    .pipe(
-      filter((event) => event instanceof NavigationEnd),
-      map(() => {
-        let route: ActivatedRoute = this.router.routerState.root;
-        let routeTitle = '';
-        while (route!.firstChild) {
-          route = route.firstChild;
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => {
+          let route: ActivatedRoute = this.router.routerState.root;
+          let routeTitle = '';
+          while (route!.firstChild) {
+            route = route.firstChild;
+          }
+          if (route.snapshot.data['title']) {
+            routeTitle = route!.snapshot.data['title'];
+          }
+          return routeTitle;
+        })
+      )
+      .subscribe((title: string) => {
+        if (title) {
+          this.headerService.currentpath$.next(title)
         }
-        if (route.snapshot.data['title']) {
-          routeTitle = route!.snapshot.data['title'];
+      });
+    this.headerService.currentpath$.subscribe(
+      x => {
+        if (!(x && (Object.keys(x).length === 0))) {
+          this.namepage = x
         }
-        return routeTitle;
       })
-    )
-    .subscribe((title: string) => {
-      if (title) {
-        
-        //this.titleService.setTitle(`My App - ${title}`);
-        console.log(title);
-        //this.namepage = title;
-        // this.namepath$.next("Ahihihi "+title);
-        // this.namepath$.subscribe(x => this.namepage = x) 
-        //console.log( this.namepath)
-      }
-    });
   }
 
   login() {
@@ -77,4 +85,5 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('userId');
     this.oidcSecurityService.logoff();
   }
+  
 }

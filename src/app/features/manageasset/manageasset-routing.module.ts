@@ -14,12 +14,12 @@ const routes: Routes = [
     {
       path: 'asset/CreateAsset',
       component: AssetFormComponent,
-      data: { title: 'Asset' },
+      data: { title: 'Asset > Create New Asset' },
     },
     {
       path: 'asset/EditAsset/:id',
       component: AssetFormComponent,
-      data: { title: 'Asset' },
+      data: { title: 'Asset > Edit Asset' },
     },
   ]),
 ];

@@ -8,7 +8,7 @@ const routes: Routes = [
     {
       path: 'request',
       component: ManageRequestForReturningComponent,
-      data: { title: 'Asset' },
+      data: { title: 'Request' },
     }
   ]),
 ];

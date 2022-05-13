@@ -14,12 +14,12 @@ const routes: Routes = [
     {
       path: 'user/CreateUser',
       component: ManageuserFormComponent,
-      data: { title: 'User' },
+      data: { title: 'User > Create New User' },
     },
     {
       path: 'user/EditUser/:id',
       component: ManageuserFormComponent,
-      data: { title: 'User' },
+      data: { title: 'User > Edit User' },
     },
   ]),
 ];
