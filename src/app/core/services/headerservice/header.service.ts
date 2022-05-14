@@ -29,7 +29,7 @@ export class HeaderService {
         return 'Assignment > Create New Assignment';
       case '/asset/CreateAsset':
         return 'Asset > Create New Asset';
-      case '/asset/CreateUser':
+      case '/user/CreateUser':
         return 'User > Create New User';
 
       default:

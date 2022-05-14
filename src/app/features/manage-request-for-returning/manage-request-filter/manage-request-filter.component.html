@@ -1,10 +1,18 @@
 <div class="page-name--content">Request List</div>
-<mat-form-field appearance="fill">
-    <mat-label>States</mat-label>
-    <mat-select [formControl]="StateSelect" multiple>
-      <mat-option *ngFor="let state of stateList" [value]="state.id">{{state.name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  {{ "" }}
-  <input type="date" placeholder="Date time" (input)="returnedDateSelected$.next($any($event.target).value)" />
-  <input type="text" placeholder="Search a text" (input)="searchKey$.next($any($event.target).value)" />
+<div class="filter-gr">
+  <div class="filter-left">
+    <mat-form-field appearance="fill">
+      <mat-label>States</mat-label>
+      <mat-select [formControl]="StateSelect" multiple>
+        <mat-option *ngFor="let state of stateList" [value]="state.id">{{state.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    {{ "" }}
+    <input type="date" class="calendar-control" placeholder="Date time"
+      (input)="returnedDateSelected$.next($any($event.target).value)" />
+  </div>
+  <div class="filter-right">
+    <input type="text" class="search-control" placeholder="Search a text"
+      (input)="searchKey$.next($any($event.target).value)" />
+  </div>
+</div>

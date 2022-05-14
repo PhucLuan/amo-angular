@@ -9,7 +9,7 @@ Term-
           matSortDisableClear matSortDirection="desc">
           <!-- Number Column -->
           <ng-container matColumnDef="assetCode">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            <th mat-header-cell *matHeaderCellDef>
               Asset Code
             </th>
             <td mat-cell *matCellDef="let row">{{ row.assetCode }}</td>
@@ -17,7 +17,7 @@ Term-
 
           <!-- Title Column -->
           <ng-container matColumnDef="assetName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            <th mat-header-cell *matHeaderCellDef>
               Asset Name
             </th>
             <td mat-cell *matCellDef="let row">{{ row.assetName }}</td>
@@ -25,7 +25,7 @@ Term-
 
           <!-- Created Column -->
           <ng-container matColumnDef="stateName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            <th mat-header-cell *matHeaderCellDef>
               State
             </th>
             <td mat-cell *matCellDef="let row">{{ row.stateName }}</td>
@@ -33,7 +33,7 @@ Term-
 
           <!-- State Column -->
           <ng-container matColumnDef="assignedDate">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            <th mat-header-cell *matHeaderCellDef>
               Assigned Date
             </th>
             <td mat-cell *matCellDef="let row">{{ row.assignedDate }}</td>

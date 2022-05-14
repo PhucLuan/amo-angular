@@ -1,4 +1,19 @@
-<p>welcome works!</p>
-<button (click)="login()">
-    <mat-icon >home</mat-icon>
-login</button>
+<div class="welcome-header">
+    <div class="welcome-header__namepage">Welcome</div>
+    <div class="welcome-header__gr-btn">
+    </div>
+  </div>
+<mat-card class="welcome-card">
+    
+    <mat-card-title class="welcometitle">
+        <img class="welcomelogo" mat-card-image src="../../../assets/images/Logo_lk.png" alt="Photo of Amo project"/>
+        <div>Welcome to Online Asset Management</div> 
+    </mat-card-title>
+    <mat-card-content>
+        <h3>
+            Please log in.
+        </h3>
+        <button class="loginbtn" mat-raised-button color="warn" (click)="login()">Login</button>
+    </mat-card-content>
+    
+</mat-card>

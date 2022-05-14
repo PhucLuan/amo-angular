@@ -84,3 +84,73 @@ body {
     color: rgba(207, 35, 56, 1);
     margin-bottom: 3rem;
 }
+
+.search-control {
+    border-style: solid;
+    border-radius: 4px;
+    border-color: rgba(112, 112, 112, 1);
+    width: 255px;
+    height: 35px;
+    background: url(./assets/images/search-icon-transparent-9.jpg) no-repeat scroll;
+    background-size: 60px;
+    background-position: right center;
+}
+.calendar-control{
+    border-style: solid;
+    border-radius: 4px;
+    border-color: rgba(112, 112, 112, 1);
+    width: 155px;
+    height: 35px;
+
+}
+/* Custom Calendar Icon In Chrome */
+input[class="calendar-control" ]::-webkit-calendar-picker-indicator {
+    border-style: solid;
+    border-color: rgba(112, 112, 112, 1);
+    opacity: 1;
+    display: block;
+    background: url(./assets/images/blank-calendar-icon-png-white-transparent-calendar-icon.png) no-repeat;
+    width: 30px;
+    height: 30px;
+    background-size: 25px;
+    background-position: 5px;
+    border-width:2px;
+}
+.filter-gr {
+    display: flex;
+    justify-content: space-between;
+    align-items:baseline;
+}
+
+.filter-right{
+    display: flex;
+}
+.filter-right button{
+    margin-left: 1rem;
+}
+.createbtn{
+    margin-left: 1rem;
+}
+
+.my-input-control{
+    width: 286px;
+    height: 35px;
+    border-width: 2px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: rgba(112, 112, 112, 1);
+}
+.my-gr-input-control{
+    width: 25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.my-textarea-control{
+    width: 286px;
+    height: 120px;
+    border-width: 2px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: rgba(112, 112, 112, 1);
+}

@@ -2,9 +2,11 @@
 <div class="container">
     <div class="card">
         <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="example-form">
+            <div class="my-gr-input-control">
+                <label for="FirstName">First Name: </label>
+                <input id="FirstName" class="my-input-control" type="text" formControlName="FirstName">
 
-            <label for="FirstName">First Name: </label>
-            <input id="FirstName" type="text" formControlName="FirstName">
+            </div>
             <div *ngIf="userForm.get('FirstName')?.invalid && (userForm.get('FirstName')?.dirty || userForm.get('FirstName')?.touched)"
                 class="alert alert-danger">
 
@@ -14,8 +16,11 @@
             </div>
             <br />
 
-            <label for="LastName">Last Name: </label>
-            <input id="LastName" type="text" formControlName="LastName">
+            <div class="my-gr-input-control">
+                <label for="LastName">Last Name: </label>
+                <input id="LastName" class="my-input-control" type="text" formControlName="LastName">
+
+            </div>
             <div *ngIf="userForm.get('LastName')?.invalid && (userForm.get('LastName')?.dirty || userForm.get('LastName')?.touched)"
                 class="alert alert-danger">
 
@@ -25,8 +30,11 @@
             </div>
             <br />
 
-            <label for="Email">Email: </label>
-            <input id="Email" type="text" formControlName="Email">
+            <div class="my-gr-input-control">
+                <label for="Email">Email: </label>
+                <input id="Email" class="my-input-control" type="text" formControlName="Email">
+
+            </div>
             <div *ngIf="userForm.get('Email')?.invalid && (userForm.get('Email')?.dirty || userForm.get('Email')?.touched)"
                 class="alert alert-danger">
 
@@ -36,8 +44,11 @@
             </div>
             <br />
 
-            <label for="UserName">User Name: </label>
-            <input id="UserName" type="text" formControlName="UserName">
+            <div class="my-gr-input-control">
+                <label for="UserName">User Name: </label>
+                <input id="UserName" class="my-input-control" type="text" formControlName="UserName">
+
+            </div>
             <div *ngIf="userForm.get('UserName')?.invalid && (userForm.get('UserName')?.dirty || userForm.get('UserName')?.touched)"
                 class="alert alert-danger">
 
@@ -47,8 +58,14 @@
             </div>
             <br />
 
-            <label for="DateOfBirth">Date of birth: </label>
-            <input id="DateOfBirth" type="date" formControlName="DateOfBirth">
+            <div class="my-gr-input-control">
+
+            </div>
+            <div class="my-gr-input-control">
+                <label for="DateOfBirth">Date of birth: </label>
+                <input id="DateOfBirth" class="my-input-control" type="date" formControlName="DateOfBirth">
+
+            </div>
             <div *ngIf="userForm.get('DateOfBirth')?.invalid && (userForm.get('DateOfBirth')?.dirty || userForm.get('DateOfBirth')?.touched)"
                 class="alert alert-danger">
 
@@ -61,13 +78,16 @@
             </div>
             <br />
 
-            <label id="example-radio-group-label">Gender</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="gender-radio-group"
-                formControlName="Gender">
-                <mat-radio-button class="gender-radio-button" *ngFor="let gender of genders" [value]="gender.id">
-                    {{gender.name}}
-                </mat-radio-button>
-            </mat-radio-group>
+            <div class="my-gr-input-control">
+                <label id="example-radio-group-label">Gender</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="gender-radio-group"
+                    formControlName="Gender">
+                    <mat-radio-button class="gender-radio-button" *ngFor="let gender of genders" [value]="gender.id">
+                        {{gender.name}}
+                    </mat-radio-button>
+                </mat-radio-group>
+
+            </div>
             <div *ngIf="userForm.get('Gender')?.invalid" class="alert alert-danger">
 
                 <div *ngIf="userForm.get('Gender')?.errors?.['required']">
@@ -75,9 +95,11 @@
                 </div>
             </div>
             <br />
+            <div class="my-gr-input-control">
+                <label for="joinedDate">Joined Date: </label>
+                <input id="JoinedDate" class="my-input-control" type="date" formControlName="JoinedDate">
 
-            <label for="joinedDate">Joined Date: </label>
-            <input id="JoinedDate" type="date" formControlName="JoinedDate">
+            </div>
             <div *ngIf="userForm.get('JoinedDate')?.invalid && (userForm.get('JoinedDate')?.dirty || userForm.get('JoinedDate')?.touched)"
                 class="alert alert-danger">
 
@@ -87,21 +109,23 @@
                 <div *ngIf="userForm.get('JoinedDate')?.errors?.['invalidWeekendJoinedDate']">
                     Joined date is Saturday or Sunday. Please select a different date.
                 </div>
-
             </div>
-            <div *ngIf="userForm.errors?.['invalidJoinedDateAfterDoB']&&userForm.get('JoinedDate')?.touched" class="alert alert-danger">
+            <div *ngIf="userForm.errors?.['invalidJoinedDateAfterDoB']&&userForm.get('JoinedDate')?.touched"
+                class="alert alert-danger">
                 <div>
                     Joined date is not later than Date of Birth. Please select a different date.
                 </div>
             </div>
             <br />
 
-            <label for="Type">Type: </label>
-            <select class="custom-select mb-3" formControlName="Type">
-                <option *ngFor="let type of typeList" [ngValue]="type.id">
-                    {{ type.name }}
-                </option>
-            </select>
+            <div class="my-gr-input-control">
+                <label for="Type">Type: </label>
+                <select class="custom-select mb-3 my-input-control" formControlName="Type">
+                    <option *ngFor="let type of typeList" [ngValue]="type.id">
+                        {{ type.name }}
+                    </option>
+                </select>
+            </div>
             <div *ngIf="userForm.get('Type')?.invalid && (userForm.get('Type')?.dirty || userForm.get('Type')?.touched)"
                 class="alert alert-danger">
 

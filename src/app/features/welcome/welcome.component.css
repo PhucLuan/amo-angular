@@ -1,0 +1,52 @@
+.welcome-header {
+    display: flex;
+    background-color: rgba(207, 35, 56, 1);
+    justify-content: space-between;
+    padding: 0 5%;
+    white-space: nowrap;
+    line-height: 67px;
+    text-align: left;
+    font-family: Segoe UI, Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(250, 252, 252, 1);
+  }
+  .welcome-header__gr-btn {
+    cursor: pointer;
+  }
+  .welcome-header__gr-btn a {
+    color: rgba(250, 252, 252, 1);
+    text-decoration: none;
+  }
+  /* .with-icon{
+    display: flex;
+    align-items: center;
+  } */
+  .welcome-header__gr-btn__menu{
+    display: flex;
+  }
+
+  
+.welcome-card{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    transform: translate(-30%);
+}
+
+.welcometitle{
+    color: rgba(207,35,56,1);
+}
+.welcometitle img{
+    margin: 0;
+    margin-bottom: 1rem;
+}
+.welcomelogo{
+    width: 7rem;
+}
+.loginbtn{
+    float: right;
+}
