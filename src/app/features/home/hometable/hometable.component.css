@@ -1,7 +1,11 @@
 .myassignment-table {
   width: 100%;
 }
-
+.myassignment-table th{
+  font-weight: bold;
+  color: black;
+  font-size: 16px;
+}
 .mat-row .mat-cell {
   border-bottom: 1px solid transparent;
   border-top: 1px solid transparent;

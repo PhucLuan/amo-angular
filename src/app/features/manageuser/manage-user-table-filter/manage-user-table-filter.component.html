@@ -1,12 +1,15 @@
 <div class="page-name--content">User List</div>
-<mat-form-field appearance="fill">
-    <mat-label>Type</mat-label>
-    <mat-select [formControl]="TypeSelect" multiple>
-      <mat-option *ngFor="let type of typeList" [value]="type.id">{{type.name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  {{ "" }}
-  <input type="text" placeholder="Search a text" (input)="searchKey$.next($any($event.target).value)" />
-  <!-- Term-
-  {{ term$ | async }} -->
-  <button mat-raised-button color="warn" (click)="onClickCreateUser()">Create New User</button>
+<div class="filter-gr">
+  <div class="filter-left">
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select [formControl]="TypeSelect" multiple>
+        <mat-option *ngFor="let type of typeList" [value]="type.id">{{type.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="filter-right">
+    <input type="text" class="search-control" placeholder="Search a text" (input)="searchKey$.next($any($event.target).value)" />
+    <button class="createbtn" mat-raised-button color="warn" (click)="onClickCreateUser()">Create New User</button>
+  </div>
+</div>

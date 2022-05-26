@@ -3,8 +3,10 @@
     <div class="card">
         <form [formGroup]="assetForm" (ngSubmit)="onSubmit()" class="example-form">
 
-            <label for="name">Name: </label>
-            <input id="name" type="text" formControlName="name">
+            <div class="my-gr-input-control">
+                <label for="name">Name: </label>
+                <input id="name" class="my-input-control" type="text" formControlName="name">
+            </div>
             <div *ngIf="assetForm.get('name')?.invalid && (assetForm.get('name')?.dirty || assetForm.get('name')?.touched)"
                 class="alert alert-danger">
 
@@ -14,8 +16,10 @@
             </div>
             <br />
 
-            <label for="specification">Specification: </label>
-            <textarea id="specification" type="textarea" formControlName="specification"></textarea>
+            <div class="my-gr-input-control">
+                <label for="specification">Specification: </label>
+                <textarea id="specification" class="my-textarea-control" type="textarea" formControlName="specification"></textarea>
+            </div>
             <div *ngIf="assetForm.get('specification')?.invalid && (assetForm.get('specification')?.dirty || assetForm.get('specification')?.touched)"
                 class="alert alert-danger">
 
@@ -25,12 +29,14 @@
             </div>
             <br />
 
-            <label for="categoryId">Category: </label>
-            <select class="custom-select mb-3" formControlName="categoryId">
-                <option *ngFor="let category of categoryList" [ngValue]="category.id">
-                    {{ category.name }}
-                </option>
-            </select>
+            <div class="my-gr-input-control">
+                <label for="categoryId">Category: </label>
+                <select class="custom-select mb-3 my-input-control" formControlName="categoryId">
+                    <option *ngFor="let category of categoryList" [ngValue]="category.id">
+                        {{ category.name }}
+                    </option>
+                </select>
+            </div>
             <div *ngIf="assetForm.get('categoryId')?.invalid && (assetForm.get('categoryId')?.dirty || assetForm.get('categoryId')?.touched)"
                 class="alert alert-danger">
 
@@ -40,8 +46,10 @@
             </div>
             <br />
 
-            <label for="installedDate">Install Date: </label>
-            <input id="installedDate" type="date" formControlName="installedDate">
+            <div class="my-gr-input-control">
+                <label for="installedDate">Install Date: </label>
+                <input id="installedDate" class="my-input-control" type="date" formControlName="installedDate">
+            </div>
             <div *ngIf="assetForm.get('installedDate')?.invalid && (assetForm.get('installedDate')?.dirty || assetForm.get('installedDate')?.touched)"
                 class="alert alert-danger">
 
@@ -51,13 +59,15 @@
             </div>
             <br />
 
-            <label id="example-radio-group-label">State</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="asset-radio-group"
-                formControlName="state">
-                <mat-radio-button class="asset-radio-button" *ngFor="let state of states" [value]="state.id">
-                    {{state.value}}
-                </mat-radio-button>
-            </mat-radio-group>
+            <div class="my-gr-input-control">
+                <label id="example-radio-group-label">State:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="asset-radio-group"
+                    formControlName="state">
+                    <mat-radio-button class="asset-radio-button" *ngFor="let state of states" [value]="state.id">
+                        {{state.value}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
             <div *ngIf="assetForm.get('state')?.invalid" class="alert alert-danger">
 
                 <div *ngIf="assetForm.get('state')?.errors?.['required']">

@@ -1,7 +1,9 @@
 <div class="page-name--content">{{title}}</div>
 <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()" class="example-form">
-    <label for="asset">Asset: </label>
-    <input (click)="ClickGetAsset($event)" id="assetName" type="text" formControlName="assetName" />
+    <div class="my-gr-input-control">
+        <label for="asset">Asset: </label>
+        <input (click)="ClickGetAsset($event)" id="assetName" class="my-input-control" type="text" formControlName="assetName" />
+    </div>
     <div *ngIf="assignmentForm.get('assetName')?.invalid && (assignmentForm.get('assetName')?.dirty || assignmentForm.get('assetName')?.touched)"
         class="alert alert-danger">
 
@@ -11,8 +13,10 @@
     </div>
     <br />
 
-    <label for="assignedTo">User: </label>
-    <input (click)="ClickGetUser($event)" id="assignedTo" type="text" formControlName="assignedTo" />
+    <div class="my-gr-input-control">
+        <label for="assignedTo">User: </label>
+        <input (click)="ClickGetUser($event)" id="assignedTo" type="text" class="my-input-control" formControlName="assignedTo" />
+    </div>
     <div *ngIf="assignmentForm.get('assignedTo')?.invalid && (assignmentForm.get('assignedTo')?.dirty || assignmentForm.get('assignedTo')?.touched)"
         class="alert alert-danger">
 
@@ -22,8 +26,10 @@
     </div>
     <br />
 
-    <label for="assignedDate">Assigned Date: </label>
-    <input id="assignedDate" type="date" formControlName="assignedDate" min="{{defaultdate | date:'yyyy-MM-dd'}}" />
+    <div class="my-gr-input-control">
+        <label for="assignedDate">Assigned Date: </label>
+        <input id="assignedDate" class="my-input-control" type="date" formControlName="assignedDate" min="{{defaultdate | date:'yyyy-MM-dd'}}" />
+    </div>
     <div *ngIf="assignmentForm.get('assignedDate')?.invalid" class="alert alert-danger">
 
         <div *ngIf="assignmentForm.get('assignedDate')?.errors?.['required']">
@@ -35,8 +41,10 @@
     </div>
     <br />
 
-    <label for="note">Note: </label>
-    <input id="note" type="text" formControlName="note" />
+    <div class="my-gr-input-control">
+        <label for="note">Note: </label>
+        <input id="note" class="my-input-control" type="text" formControlName="note" />
+    </div>
     <div *ngIf="assignmentForm.get('note')?.invalid && (assignmentForm.get('note')?.dirty || assignmentForm.get('note')?.touched)"
         class="alert alert-danger">
 
