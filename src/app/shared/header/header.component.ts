@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   public currentItem: string = "";
   ngOnInit() {
     this.namepage = this.headerService.GetTitle(this.router.url);
-    console.log(this.router.url)
+   
     if (localStorage.getItem('user') === null) {
 
       this.oidcSecurityService
@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
           this.username = data.name;
           localStorage.setItem('user', data.name);
           localStorage.setItem('userId', data.sub);
+          localStorage.setItem('role', data.role);
           localStorage.setItem('currentpath', 'Home');
         }
       });

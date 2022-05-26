@@ -19,9 +19,16 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.oidcSecurityService.checkAuth().pipe(
         map((isAuthenticated) => {
-          console.log(isAuthenticated+"ahihi")
+          console.log(state.url.toString()+" state")
           // allow navigation if authenticated
           if (isAuthenticated) {
+            if (state.url.toString() !== "/home" && localStorage.getItem('role') !== 'Admin') {
+              alert("403 Forbidden Error: You don't have permission to access this control")
+              this.router.navigate(['app'])
+              return false;
+            }
+            
+
             return true;
           }
   

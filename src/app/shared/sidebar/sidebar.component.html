@@ -5,19 +5,19 @@
       <li>
         <a routerLink="/home" routerLinkActive="active">Home</a>
       </li>
-      <li>
+      <li *ngIf="isAdmin">
         <a routerLink="/user" routerLinkActive="active">Manage User</a>
       </li>
-      <li>
+      <li *ngIf="isAdmin">
         <a routerLink="/asset" routerLinkActive="active">Manage Asset</a>
       </li>
-      <li>
+      <li *ngIf="isAdmin">
         <a routerLink="/assignment" routerLinkActive="active">Manage Assignment</a>
       </li>
-      <li>
+      <li *ngIf="isAdmin">
         <a routerLink="/request" routerLinkActive="active">Request For Returning</a>
       </li>
-      <li>
+      <li *ngIf="isAdmin">
         <a routerLink="/report" routerLinkActive="active">Report</a>
       </li>
     </ul>
