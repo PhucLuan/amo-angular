@@ -95,7 +95,8 @@ body {
     background-size: 60px;
     background-position: right center;
 }
-.calendar-control{
+
+.calendar-control {
     border-style: solid;
     border-radius: 4px;
     border-color: rgba(112, 112, 112, 1);
@@ -103,8 +104,9 @@ body {
     height: 35px;
 
 }
+
 /* Custom Calendar Icon In Chrome */
-input[class="calendar-control" ]::-webkit-calendar-picker-indicator {
+input[class="calendar-control"]::-webkit-calendar-picker-indicator {
     border-style: solid;
     border-color: rgba(112, 112, 112, 1);
     opacity: 1;
@@ -114,25 +116,28 @@ input[class="calendar-control" ]::-webkit-calendar-picker-indicator {
     height: 30px;
     background-size: 25px;
     background-position: 5px;
-    border-width:2px;
+    border-width: 2px;
 }
+
 .filter-gr {
     display: flex;
     justify-content: space-between;
-    align-items:baseline;
+    align-items: baseline;
 }
 
-.filter-right{
+.filter-right {
     display: flex;
 }
-.filter-right button{
-    margin-left: 1rem;
-}
-.createbtn{
+
+.filter-right button {
     margin-left: 1rem;
 }
 
-.my-input-control{
+.createbtn {
+    margin-left: 1rem;
+}
+
+.my-input-control {
     width: 286px;
     height: 35px;
     border-width: 2px;
@@ -140,13 +145,17 @@ input[class="calendar-control" ]::-webkit-calendar-picker-indicator {
     border-style: solid;
     border-color: rgba(112, 112, 112, 1);
 }
-.my-gr-input-control{
+
+.my-gr-input-control {
     width: 25rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.my-textarea-control{
+.custom-select.mb-3.my-input-control{
+    width: 294px;
+}
+.my-textarea-control {
     width: 286px;
     height: 120px;
     border-width: 2px;
@@ -154,3 +163,40 @@ input[class="calendar-control" ]::-webkit-calendar-picker-indicator {
     border-style: solid;
     border-color: rgba(112, 112, 112, 1);
 }
+
+/*-------------------x-square button--------------------*/
+.x-square-fill_kx {
+    overflow: visible;
+    width: 22.5px;
+    height: 22.5px;
+    left: 407px;
+    top: 24px;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    transition: all 0.3s ease-out;
+    --web-animation: fadein 0.3s ease-out;
+    --web-action-type: page;
+    --web-action-target: Manage_User.html;
+    cursor: pointer;
+}
+
+#x-square-fill_kx {
+    fill: transparent;
+    stroke: rgba(227, 12, 24, 1);
+    stroke-width: 2.5px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.form-gr-btn {
+    margin-left: 15rem;
+    width: 10rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.alert.alert-danger.ng-star-inserted {
+    margin-top: 1rem;
+    width: 25rem;
+  }

@@ -15,3 +15,16 @@
     padding: 1rem;
     margin-bottom: 1rem;
 }
+
+.userform-gender-radio-group{
+    width: 294px;
+    display: flex;
+    justify-content: flex-start;
+}
+.userform-gender-radio-group mat-radio-button{
+    margin-right: 1rem;
+}
+
+#DateOfBirth,#JoinedDate{
+    width: 289px;
+}

@@ -2,7 +2,8 @@
 <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()" class="example-form">
     <div class="my-gr-input-control">
         <label for="asset">Asset: </label>
-        <input (click)="ClickGetAsset($event)" id="assetName" class="my-input-control" type="text" formControlName="assetName" />
+        <input (click)="ClickGetAsset($event)" id="assetName" class="my-input-control" type="text"
+            formControlName="assetName" />
     </div>
     <div *ngIf="assignmentForm.get('assetName')?.invalid && (assignmentForm.get('assetName')?.dirty || assignmentForm.get('assetName')?.touched)"
         class="alert alert-danger">
@@ -15,7 +16,8 @@
 
     <div class="my-gr-input-control">
         <label for="assignedTo">User: </label>
-        <input (click)="ClickGetUser($event)" id="assignedTo" type="text" class="my-input-control" formControlName="assignedTo" />
+        <input (click)="ClickGetUser($event)" id="assignedTo" type="text" class="my-input-control"
+            formControlName="assignedTo" />
     </div>
     <div *ngIf="assignmentForm.get('assignedTo')?.invalid && (assignmentForm.get('assignedTo')?.dirty || assignmentForm.get('assignedTo')?.touched)"
         class="alert alert-danger">
@@ -28,7 +30,8 @@
 
     <div class="my-gr-input-control">
         <label for="assignedDate">Assigned Date: </label>
-        <input id="assignedDate" class="my-input-control" type="date" formControlName="assignedDate" min="{{defaultdate | date:'yyyy-MM-dd'}}" />
+        <input id="assignedDate" class="my-input-control" type="date" formControlName="assignedDate"
+            min="{{defaultdate | date:'yyyy-MM-dd'}}" />
     </div>
     <div *ngIf="assignmentForm.get('assignedDate')?.invalid" class="alert alert-danger">
 
@@ -54,10 +57,12 @@
     </div>
     <br />
 
-    <button mat-raised-button color="warn" type="submit" [disabled]="!assignmentForm.valid">
-        Save
-    </button>
-    <button mat-raised-button (click)="OnCancelClick()">
-        Cancel
-    </button>
+    <div class="form-gr-btn">
+        <button mat-raised-button color="warn" type="submit" [disabled]="!assignmentForm.valid">
+            Save
+        </button>
+        <button mat-raised-button (click)="OnCancelClick()">
+            Cancel
+        </button>
+    </div>
 </form>

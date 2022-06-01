@@ -16,9 +16,10 @@
             </div>
             <br />
 
-            <div class="my-gr-input-control">
+            <div class="my-gr-input-control specification-control">
                 <label for="specification">Specification: </label>
-                <textarea id="specification" class="my-textarea-control" type="textarea" formControlName="specification"></textarea>
+                <textarea id="specification" class="my-textarea-control" type="textarea"
+                    formControlName="specification"></textarea>
             </div>
             <div *ngIf="assetForm.get('specification')?.invalid && (assetForm.get('specification')?.dirty || assetForm.get('specification')?.touched)"
                 class="alert alert-danger">
@@ -59,7 +60,7 @@
             </div>
             <br />
 
-            <div class="my-gr-input-control">
+            <div class="my-gr-input-control state-control">
                 <label id="example-radio-group-label">State:</label>
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="asset-radio-group"
                     formControlName="state">
@@ -75,12 +76,14 @@
                 </div>
             </div>
             <br />
-            <button mat-raised-button color="warn" type="submit" [disabled]="!assetForm.valid">
-                Save
-            </button>
-            <button mat-raised-button (click)="OnCancelClick()">
-                Cancel
-            </button>
+            <div class="form-gr-btn">
+                <button mat-raised-button color="warn" type="submit" [disabled]="!assetForm.valid">
+                    Save
+                </button>
+                <button mat-raised-button (click)="OnCancelClick()">
+                    Cancel
+                </button>
+            </div>
         </form>
     </div>
 </div>

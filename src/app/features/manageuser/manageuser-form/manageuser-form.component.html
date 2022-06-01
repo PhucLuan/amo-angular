@@ -80,7 +80,7 @@
 
             <div class="my-gr-input-control">
                 <label id="example-radio-group-label">Gender</label>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="gender-radio-group"
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="userform-gender-radio-group"
                     formControlName="Gender">
                     <mat-radio-button class="gender-radio-button" *ngFor="let gender of genders" [value]="gender.id">
                         {{gender.name}}
@@ -134,13 +134,14 @@
                 </div>
             </div>
             <br />
-
-            <button mat-raised-button color="warn" type="submit" [disabled]="!userForm.valid">
-                Save
-            </button>
-            <button mat-raised-button (click)="OnCancelClick()">
-                Cancel
-            </button>
+            <div class="form-gr-btn">
+                <button mat-raised-button color="warn" type="submit" [disabled]="!userForm.valid">
+                    Save
+                </button>
+                <button mat-raised-button (click)="OnCancelClick()">
+                    Cancel
+                </button>
+            </div>
         </form>
     </div>
 </div>
